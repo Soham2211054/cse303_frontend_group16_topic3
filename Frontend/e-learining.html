@@ -753,6 +753,7 @@
                 { id: 'profile', name: 'My Profile', icon: 'fas fa-user' },
                 { id: 'courses', name: 'Browse Courses', icon: 'fas fa-book' },
                 { id: 'content', name: 'Course Content', icon: 'fas fa-file-alt' },
+                { id: 'discussion', name: 'Discussion', icon: 'fas fa-comments' },
                 { id: 'progress', name: 'My Progress', icon: 'fas fa-chart-line' },
                 { id: 'performanceReport', name: 'Performance Report', icon: 'fas fa-chart-bar' },
                 { id: 'giveReview', name: 'Give Review', icon: 'fas fa-star' },
@@ -1029,6 +1030,9 @@
                     break;
                 case 'content':
                     pageContent = renderContent();
+                    break;
+                case 'discussion':
+                    pageContent = renderCreateDiscussion();
                     break;
                 case 'progress':
                     pageContent = renderProgress();
