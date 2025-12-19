@@ -667,16 +667,16 @@
             editingItem: null,
             // Mock data for demonstration
             users: [
-                { id: 1, name: 'John Student', loginId: '2211054', password: '1234', role: 'student', goals: 'Learn programming', interests: 'Web Development' },
-                { id: 2, name: 'Jane Instructor', loginId: '2211054', password: '1234', role: 'instructor', expertise: 'Computer Science', qualification: 'PhD' },
-                { id: 3, name: 'Admin User', loginId: '2211054', password: '1234', role: 'admin' },
-                { id: 4, name: 'Alice Johnson', loginId: '2211054', password: '1234', role: 'student', goals: 'Data Science', interests: 'Machine Learning' },
-                { id: 5, name: 'Bob Smith', loginId: '2211054', password: '1234', role: 'instructor', expertise: 'Mathematics', qualification: 'MSc' }
+                { id: 1, name: 'John Student', loginId: '2211054', password: '220154', role: 'student', goals: 'Learn programming', interests: 'Web Development' },
+                { id: 2, name: 'Jane Instructor', loginId: '2211054', password: '220154', role: 'instructor', expertise: 'Computer Science', qualification: 'PhD', email: 'jane.instructor@example.com' },
+                { id: 3, name: 'Admin User', loginId: '2211054', password: '220154', role: 'admin' },
+                { id: 4, name: 'Alice Johnson', loginId: '2211054', password: '220154', role: 'student', goals: 'Data Science', interests: 'Machine Learning' },
+                { id: 5, name: 'Bob Smith', loginId: '2211054', password: '220154', role: 'instructor', expertise: 'Mathematics', qualification: 'MSc', email: 'bob.smith@example.com' }
             ],
             courses: [
-                { id: 1, title: 'Introduction to Programming', category: 'Programming', difficulty: 'Beginner', instructor: 'Jane Instructor', rating: 4.5, description: 'Learn the basics of programming' },
-                { id: 2, title: 'Advanced Web Development', category: 'Web Development', difficulty: 'Advanced', instructor: 'John Doe', rating: 4.8, description: 'Master advanced web development concepts' },
-                { id: 3, title: 'Data Science Fundamentals', category: 'Data Science', difficulty: 'Intermediate', instructor: 'Bob Smith', rating: 4.3, description: 'Introduction to data science and analytics' }
+                { id: 1, title: 'Introduction to Programming', category: 'Programming', difficulty: 'Beginner', instructor: 'Jane Instructor', rating: 4.5, description: 'Learn the basics of programming', prerequisiteCourseId: null },
+                { id: 2, title: 'Advanced Web Development', category: 'Web Development', difficulty: 'Advanced', instructor: 'John Doe', rating: 4.8, description: 'Master advanced web development concepts', prerequisiteCourseId: 1 },
+                { id: 3, title: 'Data Science Fundamentals', category: 'Data Science', difficulty: 'Intermediate', instructor: 'Bob Smith', rating: 4.3, description: 'Introduction to data science and analytics', prerequisiteCourseId: null }
             ],
             enrollments: [
                 { id: 1, studentId: 1, courseId: 1, enrollmentDate: '2023-01-15', status: 'In Progress', progress: 65 },
@@ -689,8 +689,19 @@
                 { id: 3, courseId: 2, title: 'HTML & CSS Tutorial', type: 'Video', instructor: 'John Doe', description: 'Web development basics' }
             ],
             quizzes: [
-                { id: 1, courseId: 1, title: 'Programming Basics Quiz', questions: 10, totalMarks: 100, description: 'Test your programming knowledge' },
-                { id: 2, courseId: 2, title: 'Web Development Quiz', questions: 15, totalMarks: 150, description: 'Advanced web development quiz' }
+                { id: 1, courseId: 1, title: 'Programming Basics Quiz', questions: 10, totalMarks: 100, date: '2023-09-15', duration: '30m', description: 'Test your programming knowledge' },
+                { id: 2, courseId: 2, title: 'Web Development Quiz', questions: 15, totalMarks: 150, date: '2023-10-05', duration: '45m', description: 'Advanced web development quiz' },
+                { id: 3, courseId: 3, title: 'Data Science Fundamentals Quiz', questions: 12, totalMarks: 120, date: '2023-11-01', duration: '35m', description: 'Data science basics' },
+                { id: 4, courseId: 1, title: 'Programming Midterm', questions: 20, totalMarks: 200, date: '2023-11-20', duration: '60m', description: 'Midterm assessment' },
+                { id: 5, courseId: 2, title: 'Frontend Frameworks Quiz', questions: 10, totalMarks: 100, date: '2023-12-01', duration: '25m', description: 'React & Vue basics' }
+            ],
+            // Discussions data for instructor 'Create Discussion' section
+            discussions: [
+                { id: 1, title: 'Week 1 - Intro Questions', studentId: 1, instructorId: 2, topic: 'Introduction', date: '2023-09-01', duration: '30m', courseId: 1 },
+                { id: 2, title: 'Advanced Topics Discussion', studentId: 4, instructorId: 5, topic: 'Advanced Web', date: '2023-10-10', duration: '45m', courseId: 2 },
+                { id: 3, title: 'Data Science Q&A', studentId: 1, instructorId: 5, topic: 'Data Science', date: '2023-11-05', duration: '40m', courseId: 3 },
+                { id: 4, title: 'Exam Prep', studentId: 4, instructorId: 2, topic: 'Exam Revision', date: '2023-11-18', duration: '60m', courseId: 1 },
+                { id: 5, title: 'Project Discussion', studentId: 1, instructorId: 2, topic: 'Capstone Project', date: '2023-12-02', duration: '50m', courseId: 2 }
             ],
             scores: [
                 { id: 1, studentId: 1, quizId: 1, score: 85, feedback: 'Good understanding of basics' },
@@ -732,7 +743,6 @@
                 { id: 'courses', name: 'Browse Courses', icon: 'fas fa-book' },
                 { id: 'content', name: 'Course Content', icon: 'fas fa-file-alt' },
                 { id: 'progress', name: 'My Progress', icon: 'fas fa-chart-line' },
-                { id: 'assessments', name: 'Assessments', icon: 'fas fa-tasks' },
                 { id: 'certificates', name: 'Certificates', icon: 'fas fa-award' }
             ],
             instructor: [
@@ -741,7 +751,8 @@
                 { id: 'courses', name: 'My Courses', icon: 'fas fa-book' },
                 { id: 'content', name: 'Content Management', icon: 'fas fa-file-alt' },
                 { id: 'students', name: 'Student Progress', icon: 'fas fa-user-graduate' },
-                { id: 'assessments', name: 'Assessments', icon: 'fas fa-tasks' }
+                { id: 'createDiscussion', name: 'Create Discussion', icon: 'fas fa-comments' },
+                { id: 'createQuiz', name: 'Create Quiz', icon: 'fas fa-question-circle' }
             ],
             admin: [
                 { id: 'dashboard', name: 'Dashboard', icon: 'fas fa-tachometer-alt' },
@@ -749,7 +760,7 @@
                 { id: 'courses', name: 'Course Management', icon: 'fas fa-book' },
                 { id: 'content', name: 'Content Management', icon: 'fas fa-file-alt' },
                 { id: 'enrollments', name: 'Enrollments & Progress', icon: 'fas fa-chart-line' },
-                { id: 'performance', name: 'Performance Reports', icon: 'fas fa-chart-bar' },
+                { id: 'performance', name: 'View Report', icon: 'fas fa-chart-bar' },
                 { id: 'settings', name: 'System Settings', icon: 'fas fa-cogs' }
             ]
         };
@@ -759,7 +770,10 @@
             // Check if user is already logged in (for demo purposes)
             const savedUser = localStorage.getItem('currentUser');
             if (savedUser) {
-                state.currentUser = JSON.parse(savedUser);
+                const parsed = JSON.parse(savedUser);
+                // Prefer the latest user object from mock `state.users` (keeps email and other updates)
+                const updated = state.users.find(u => u.id === parsed.id) || state.users.find(u => u.loginId === parsed.loginId && u.role === parsed.role) || parsed;
+                state.currentUser = updated;
                 state.currentRole = state.currentUser.role;
                 showMainInterface();
             } else {
@@ -861,8 +875,9 @@
             const role = selectedRole.getAttribute('data-role');
             
             // Simple authentication (in a real app, this would be a server call)
+            // NOTE: Password validation intentionally skipped per config (allow any password);
             const user = state.users.find(u => 
-                u.loginId === username && u.password === password && u.role === role
+                u.loginId === username && u.role === role
             );
             
             if (user) {
@@ -966,6 +981,12 @@
                     break;
                 case 'assessments':
                     pageContent = renderAssessments();
+                    break;
+                case 'createDiscussion':
+                    pageContent = renderCreateDiscussion();
+                    break;
+                case 'createQuiz':
+                    pageContent = renderCreateQuiz();
                     break;
                 case 'certificates':
                     pageContent = renderCertificates();
@@ -1314,11 +1335,6 @@
                             <div class="card-title">Active Enrollments</div>
                             <div class="card-value">${activeEnrollments}</div>
                         </div>
-                        <div class="card">
-                            <div class="card-icon"><i class="fas fa-heartbeat"></i></div>
-                            <div class="card-title">System Health</div>
-                            <div class="card-value">98%</div>
-                        </div>
                     </div>
                 `;
             }
@@ -1364,10 +1380,17 @@
                                 <th>Login ID</th>
                                 <td>${state.currentUser.loginId}</td>
                             </tr>
+                            ${state.currentUser.role === 'instructor' ? `
+                            <tr>
+                                <th>Email</th>
+                                <td>${state.currentUser.email || ''}</td>
+                            </tr>
+                            ` : `
                             <tr>
                                 <th>Role</th>
                                 <td>${state.currentUser.role}</td>
                             </tr>
+                            `}
                             ${state.currentUser.goals ? `
                                 <tr>
                                     <th>Learning Goals</th>
@@ -1465,9 +1488,11 @@
                 tableContent = `
                     <thead>
                         <tr>
+                            <th>Course ID</th>
                             <th>Course Title</th>
                             <th>Category</th>
                             <th>Difficulty</th>
+                            <th>Prerequisite CourseID</th>
                             <th>Enrollments</th>
                             <th>Rating</th>
                             <th>Actions</th>
@@ -1478,9 +1503,11 @@
                             const enrollments = state.enrollments.filter(e => e.courseId === course.id).length;
                             return `
                                 <tr>
+                                    <td>${course.id}</td>
                                     <td>${course.title}</td>
                                     <td>${course.category}</td>
                                     <td>${course.difficulty}</td>
+                                    <td>${course.prerequisiteCourseId || '-'}</td>
                                     <td>${enrollments}</td>
                                     <td>${course.rating} ⭐</td>
                                     <td>
@@ -1500,7 +1527,6 @@
                             <i class="fas fa-search"></i>
                             <input type="text" class="search-input" placeholder="Search courses..." value="${state.searchQuery}">
                         </div>
-                        <button class="btn add-btn" data-type="courses"><i class="fas fa-plus"></i> Add Course</button>
                     </div>
                 `;
                 
@@ -1513,7 +1539,6 @@
                             <th>Instructor</th>
                             <th>Rating</th>
                             <th>Status</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1525,10 +1550,6 @@
                                 <td>${course.instructor}</td>
                                 <td>${course.rating} ⭐</td>
                                 <td>Active</td>
-                                <td>
-                                    <button class="action-btn edit-btn" data-type="courses" data-id="${course.id}"><i class="fas fa-edit"></i> Edit</button>
-                                    <button class="action-btn delete delete-btn" data-type="courses" data-id="${course.id}"><i class="fas fa-trash"></i> Delete</button>
-                                </td>
                             </tr>
                         `).join('')}
                     </tbody>
@@ -1580,6 +1601,7 @@
                 tableContent = `
                     <thead>
                         <tr>
+                            <th>Course ID</th>
                             <th>Course</th>
                             <th>Content Title</th>
                             <th>Type</th>
@@ -1592,6 +1614,7 @@
                             const course = state.courses.find(c => c.id === cont.courseId);
                             return `
                                 <tr>
+                                    <td>${course.id}</td>
                                     <td>${course.title}</td>
                                     <td>${cont.title}</td>
                                     <td>${cont.type}</td>
@@ -1624,6 +1647,7 @@
                 tableContent = `
                     <thead>
                         <tr>
+                            <th>Course ID</th>
                             <th>Course</th>
                             <th>Content Title</th>
                             <th>Type</th>
@@ -1636,6 +1660,7 @@
                             const course = state.courses.find(c => c.id === cont.courseId);
                             return `
                                 <tr>
+                                    <td>${course.id}</td>
                                     <td>${course.title}</td>
                                     <td>${cont.title}</td>
                                     <td>${cont.type}</td>
@@ -1656,20 +1681,19 @@
                             <i class="fas fa-search"></i>
                             <input type="text" class="search-input" placeholder="Search content..." value="${state.searchQuery}">
                         </div>
-                        <button class="btn add-btn" data-type="content"><i class="fas fa-plus"></i> Add Content</button>
                     </div>
                 `;
                 
                 tableContent = `
                     <thead>
                         <tr>
+                            <th>Course ID</th>
                             <th>Course</th>
                             <th>Content Title</th>
                             <th>Type</th>
                             <th>Instructor</th>
                             <th>Upload Date</th>
                             <th>Status</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1677,16 +1701,13 @@
                             const course = state.courses.find(c => c.id === cont.courseId);
                             return `
                                 <tr>
+                                    <td>${course.id}</td>
                                     <td>${course.title}</td>
                                     <td>${cont.title}</td>
                                     <td>${cont.type}</td>
                                     <td>${cont.instructor}</td>
                                     <td>2023-04-15</td>
                                     <td>Approved</td>
-                                    <td>
-                                        <button class="action-btn"><i class="fas fa-search"></i> Review</button>
-                                        <button class="action-btn delete delete-btn" data-type="content" data-id="${cont.id}"><i class="fas fa-trash"></i> Delete</button>
-                                    </td>
                                 </tr>
                             `;
                         }).join('')}
@@ -1862,6 +1883,77 @@
         }
 
         // Additional rendering functions for other pages
+        function renderCreateDiscussion() {
+            const discussions = state.discussions;
+            return `
+                <h2 class="page-title"><i class="fas fa-comments"></i> Create Discussion</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Discussion ID</th>
+                                <th>Discussion Title</th>
+                                <th>Student ID</th>
+                                <th>Instructor ID</th>
+                                <th>Topic</th>
+                                <th>Discussion Date</th>
+                                <th>Duration</th>
+                                <th>Course ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${discussions.map(d => `
+                                <tr>
+                                    <td>${d.id}</td>
+                                    <td>${d.title}</td>
+                                    <td>${d.studentId}</td>
+                                    <td>${d.instructorId}</td>
+                                    <td>${d.topic}</td>
+                                    <td>${d.date}</td>
+                                    <td>${d.duration}</td>
+                                    <td>${d.courseId}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function renderCreateQuiz() {
+            const quizzes = state.quizzes;
+            return `
+                <h2 class="page-title"><i class="fas fa-question-circle"></i> Create Quiz</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Quiz ID</th>
+                                <th>Quiz Title</th>
+                                <th>Total Marks</th>
+                                <th>Course ID</th>
+                                <th>Quiz Date</th>
+                                <th>Quiz Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${quizzes.map(q => `
+                                <tr>
+                                    <td>${q.id}</td>
+                                    <td>${q.title}</td>
+                                    <td>${q.totalMarks}</td>
+                                    <td>${q.courseId}</td>
+                                    <td>${q.date || '-'}</td>
+                                    <td>${q.duration || '-'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        // Additional rendering functions for other pages
         function renderCertificates() {
             const completedEnrollments = state.enrollments.filter(
                 e => e.studentId === state.currentUser.id && e.status === 'Completed'
@@ -1925,12 +2017,10 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Student Name</th>
                                 <th>Login ID</th>
                                 <th>Enrolled Courses</th>
                                 <th>Average Progress</th>
                                 <th>Last Activity</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1941,15 +2031,10 @@
                                 
                                 return `
                                     <tr>
-                                        <td>${student.name}</td>
                                         <td>${student.loginId}</td>
                                         <td>${studentEnrollments.length}</td>
                                         <td>${avgProgress.toFixed(1)}%</td>
                                         <td>2023-05-15</td>
-                                        <td>
-                                            <button class="action-btn view-btn" data-type="users" data-id="${student.id}"><i class="fas fa-chart-line"></i> Progress</button>
-                                            <button class="action-btn"><i class="fas fa-envelope"></i> Message</button>
-                                        </td>
                                     </tr>
                                 `;
                             }).join('')}
@@ -2033,7 +2118,7 @@
                             <i class="fas fa-search"></i>
                             <input type="text" class="search-input" placeholder="Search enrollments..." value="${state.searchQuery}">
                         </div>
-                        <button class="btn add-btn" data-type="enrollments"><i class="fas fa-plus"></i> Add Enrollment</button>
+                        ${state.currentRole !== 'admin' ? `<button class="btn add-btn" data-type="enrollments"><i class="fas fa-plus"></i> Add Enrollment</button>` : ''}
                     </div>
                     <table>
                         <thead>
@@ -2043,7 +2128,7 @@
                                 <th>Enrollment Date</th>
                                 <th>Status</th>
                                 <th>Progress</th>
-                                <th>Actions</th>
+                                ${state.currentRole !== 'admin' ? '<th>Actions</th>' : ''}
                             </tr>
                         </thead>
                         <tbody>
@@ -2057,10 +2142,12 @@
                                         <td>${enrollment.enrollmentDate}</td>
                                         <td>${enrollment.status}</td>
                                         <td>${enrollment.progress}%</td>
+                                        ${state.currentRole !== 'admin' ? `
                                         <td>
                                             <button class="action-btn view-btn" data-type="enrollments" data-id="${enrollment.id}"><i class="fas fa-info-circle"></i> Details</button>
                                             <button class="action-btn delete delete-btn" data-type="enrollments" data-id="${enrollment.id}"><i class="fas fa-trash"></i> Delete</button>
                                         </td>
+                                        ` : ''}
                                     </tr>
                                 `;
                             }).join('')}
