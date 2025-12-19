@@ -674,9 +674,9 @@
                 { id: 5, name: 'Bob Smith', loginId: '2211054', password: '220154', role: 'instructor', expertise: 'Mathematics', qualification: 'MSc', email: 'bob.smith@example.com' }
             ],
             courses: [
-                { id: 1, title: 'Introduction to Programming', category: 'Programming', difficulty: 'Beginner', instructor: 'Jane Instructor', rating: 4.5, description: 'Learn the basics of programming', prerequisiteCourseId: null },
-                { id: 2, title: 'Advanced Web Development', category: 'Web Development', difficulty: 'Advanced', instructor: 'John Doe', rating: 4.8, description: 'Master advanced web development concepts', prerequisiteCourseId: 1 },
-                { id: 3, title: 'Data Science Fundamentals', category: 'Data Science', difficulty: 'Intermediate', instructor: 'Bob Smith', rating: 4.3, description: 'Introduction to data science and analytics', prerequisiteCourseId: null }
+                { id: 1, title: 'Introduction to Programming', category: 'Programming', difficulty: 'Beginner', instructor: 'Jane Instructor', rating: 4.5, description: 'Learn the basics of programming', prerequisiteCourseIds: [] },
+                { id: 2, title: 'Advanced Web Development', category: 'Web Development', difficulty: 'Advanced', instructor: 'John Doe', rating: 4.8, description: 'Master advanced web development concepts', prerequisiteCourseIds: [1] },
+                { id: 3, title: 'Data Science Fundamentals', category: 'Data Science', difficulty: 'Intermediate', instructor: 'Bob Smith', rating: 4.3, description: 'Introduction to data science and analytics', prerequisiteCourseIds: [] }
             ],
             enrollments: [
                 { id: 1, studentId: 1, courseId: 1, enrollmentDate: '2023-01-15', status: 'In Progress', progress: 65 },
@@ -1146,7 +1146,12 @@
             
             inputs.forEach(input => {
                 if (input.id !== 'itemType') {
-                    formData[input.id] = input.value;
+                    if (input.tagName === 'SELECT' && input.multiple) {
+                        // collect multiple selected values as numbers
+                        formData[input.id] = Array.from(input.selectedOptions).map(o => parseInt(o.value));
+                    } else {
+                        formData[input.id] = input.value;
+                    }
                 }
             });
             
@@ -1255,6 +1260,13 @@
                         <div class="form-group">
                             <label for="instructor">Instructor</label>
                             <input type="text" id="instructor" class="form-control" value="${item ? item.instructor : ''}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prerequisiteCourseIds">Prerequisite Courses</label>
+                            <select id="prerequisiteCourseIds" class="form-control" multiple>
+                                ${state.courses.map(course => `<option value="${course.id}" ${item && item.prerequisiteCourseIds && item.prerequisiteCourseIds.includes(course.id) ? 'selected' : ''}>${course.title} (ID ${course.id})</option>`).join('')}
+                            </select>
+                            <small class="form-text">Hold Ctrl/Cmd to select multiple prerequisite courses</small>
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
@@ -1720,7 +1732,7 @@
                                     <td>${course.title}</td>
                                     <td>${course.category}</td>
                                     <td>${course.difficulty}</td>
-                                    <td>${course.prerequisiteCourseId || '-'}</td>
+                                    <td>${course.prerequisiteCourseIds && course.prerequisiteCourseIds.length > 0 ? course.prerequisiteCourseIds.map(pid => (state.courses.find(c => c.id === pid) || {}).title || pid).join(', ') : '-'}</td>
                                     <td>${enrollments}</td>
                                     <td>${course.rating} ⭐</td>
                                     <td>
