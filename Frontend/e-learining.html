@@ -708,7 +708,12 @@
                 { id: 2, studentId: 1, quizId: 2, score: 92, feedback: 'Excellent performance' }
             ],
             performanceReports: [
-                { id: 1, studentId: 1, strengths: 'Problem solving, Algorithm design', weaknesses: 'Debugging complex code', recommendations: 'Practice more debugging exercises' }
+                { id: 1, studentId: 1, insights: 'Stronger analytical reasoning observed; recommendation to increase practice on debugging workflows using test-driven development.', recommendations: 'Focus on debugging exercises, practice unit tests, and review algorithm challenges weekly.', strengthsAndWeaknesses: 'Strengths: Problem solving, algorithm design; Weaknesses: Debugging complex code' },
+                { id: 2, studentId: 4, insights: 'Good theoretical knowledge but needs more hands-on practice; suggestion to work on applied projects.', recommendations: 'Complete project-based assignments and participate in group discussions.', strengthsAndWeaknesses: 'Strengths: Conceptual understanding; Weaknesses: Practical implementation' }
+            ],
+            reviews: [
+                { id: 1, topic: 'Course Content', rating: 4, comment: 'Well-structured material and clear examples.', date: '2023-09-20' },
+                { id: 2, topic: 'Instructor Effectiveness', rating: 5, comment: 'Great explanations and prompt feedback.', date: '2023-10-02' }
             ],
             activityLogs: [
                 { id: 1, userId: 1, activity: 'Logged in', timestamp: '2023-05-01 09:15:00' },
@@ -743,6 +748,8 @@
                 { id: 'courses', name: 'Browse Courses', icon: 'fas fa-book' },
                 { id: 'content', name: 'Course Content', icon: 'fas fa-file-alt' },
                 { id: 'progress', name: 'My Progress', icon: 'fas fa-chart-line' },
+                { id: 'performanceReport', name: 'Performance Report', icon: 'fas fa-chart-bar' },
+                { id: 'giveReview', name: 'Give Review', icon: 'fas fa-star' },
                 { id: 'certificates', name: 'Certificates', icon: 'fas fa-award' }
             ],
             instructor: [
@@ -1005,6 +1012,12 @@
                     break;
                 case 'createQuiz':
                     pageContent = renderCreateQuiz();
+                    break;
+                case 'performanceReport':
+                    pageContent = renderStudentPerformanceReport();
+                    break;
+                case 'giveReview':
+                    pageContent = renderGiveReview();
                     break;
                 case 'certificates':
                     pageContent = renderCertificates();
@@ -2058,6 +2071,64 @@
                                     <td>${q.courseId}</td>
                                     <td>${q.date || '-'}</td>
                                     <td>${q.duration || '-'}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function renderStudentPerformanceReport() {
+            const reports = state.performanceReports.filter(r => r.studentId === state.currentUser.id);
+            return `
+                <h2 class="page-title"><i class="fas fa-chart-bar"></i> Performance Report</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Performance Report ID</th>
+                                <th>AI-generated Insights</th>
+                                <th>Learning Recommendations</th>
+                                <th>Student Strength And Weakness</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${reports.map(r => `
+                                <tr>
+                                    <td>${r.id}</td>
+                                    <td>${r.insights}</td>
+                                    <td>${r.recommendations}</td>
+                                    <td>${r.strengthsAndWeaknesses}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        function renderGiveReview() {
+            const reviews = state.reviews;
+            return `
+                <h2 class="page-title"><i class="fas fa-star"></i> Give Review</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Review Topic</th>
+                                <th>Rating</th>
+                                <th>Comment</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${reviews.map(rv => `
+                                <tr>
+                                    <td>${rv.topic}</td>
+                                    <td>${rv.rating}</td>
+                                    <td>${rv.comment}</td>
+                                    <td>${rv.date}</td>
                                 </tr>
                             `).join('')}
                         </tbody>
