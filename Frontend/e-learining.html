@@ -859,6 +859,13 @@
                 }
             });
 
+            // Update instructor select when course changes in review form
+            document.addEventListener('change', function(e) {
+                if (e.target && e.target.id === 'courseForReview') {
+                    populateInstructorsForCourse(e.target.value);
+                }
+            });
+
             // Delete button clicks (will be added dynamically)
             document.addEventListener('click', function(e) {
                 if (e.target && e.target.classList.contains('delete-btn')) {
@@ -882,6 +889,22 @@
                     }
                 }
             });
+        }
+
+        // Helper: populate instructors select for a selected course
+        function populateInstructorsForCourse(courseId) {
+            const instrSelect = document.getElementById('instructorForReview');
+            if (!instrSelect) return;
+            const course = state.courses.find(c => String(c.id) === String(courseId));
+            let instructors = [];
+            if (course) {
+                instructors = state.users.filter(u => u.role === 'instructor' && u.name === course.instructor);
+            }
+            if (instructors.length === 0) {
+                instructors = state.users.filter(u => u.role === 'instructor');
+            }
+            instrSelect.innerHTML = instructors.map(i => `<option value="${i.id}">${i.name} (ID ${i.id})</option>`).join('');
+            instrSelect.value = instructors[0] ? instructors[0].id : '';
         }
 
         // Handle login
@@ -1050,6 +1073,12 @@
             modalTitle.innerHTML = `<i class="fas fa-plus-circle"></i> Add New ${getItemTypeName(itemType)}`;
             modalBody.innerHTML = generateForm(itemType);
             modal.style.display = 'flex';
+
+            // If opening review form, populate instructors based on selected course
+            if (itemType === 'reviews') {
+                const sel = document.getElementById('courseForReview');
+                if (sel) populateInstructorsForCourse(sel.value);
+            }
         }
 
         // Close modal
@@ -1074,6 +1103,18 @@
                 }
                 closeModalWindow();
                 return;
+            }
+
+            // Normalize review form fields before saving
+            if (itemType === 'reviews') {
+                if (formData.courseForReview) {
+                    formData.courseId = parseInt(formData.courseForReview);
+                    delete formData.courseForReview;
+                }
+                if (formData.instructorForReview) {
+                    formData.instructorId = parseInt(formData.instructorForReview);
+                    delete formData.instructorForReview;
+                }
             }
             
             if (state.editingItem) {
@@ -1344,6 +1385,38 @@
                             <select id="courseId" class="form-control" required>
                                 ${state.courses.map(c => `<option value="${c.id}" ${item && item.courseId == c.id ? 'selected' : ''}>${c.title}</option>`).join('')}
                             </select>
+                        </div>
+                    `;
+                    break;
+                case 'reviews':
+                    formHTML += `
+                        <div class="form-group">
+                            <label for="courseForReview">Course</label>
+                            <select id="courseForReview" class="form-control" required>
+                                ${state.courses.map(course => `<option value="${course.id}" ${item && item.courseId == course.id ? 'selected' : ''}>${course.title}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="instructorForReview">Instructor</label>
+                            <select id="instructorForReview" class="form-control" required>
+                                ${state.users.filter(u => u.role === 'instructor').map(i => `<option value="${i.id}" ${item && item.instructorId == i.id ? 'selected' : ''}>${i.name} (ID ${i.id})</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="topic">Review Topic</label>
+                            <input type="text" id="topic" class="form-control" value="${item ? item.topic : ''}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rating">Rating</label>
+                            <input type="number" id="rating" min="1" max="5" class="form-control" value="${item ? item.rating : ''}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Comment</label>
+                            <textarea id="comment" class="form-control" rows="3">${item ? item.comment : ''}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" class="form-control" value="${item ? item.date : (new Date()).toISOString().split('T')[0]}">
                         </div>
                     `;
                     break;
@@ -2113,6 +2186,13 @@
             return `
                 <h2 class="page-title"><i class="fas fa-star"></i> Give Review</h2>
                 <div class="table-container">
+                    <div class="table-header">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" class="search-input" placeholder="Search reviews..." value="${state.searchQuery}">
+                        </div>
+                        <button class="btn add-btn" data-type="reviews"><i class="fas fa-star"></i> Review</button>
+                    </div>
                     <table>
                         <thead>
                             <tr>
