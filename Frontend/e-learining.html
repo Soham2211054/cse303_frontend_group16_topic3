@@ -715,6 +715,12 @@
                 { id: 1, topic: 'Course Content', rating: 4, comment: 'Well-structured material and clear examples.', date: '2023-09-20' },
                 { id: 2, topic: 'Instructor Effectiveness', rating: 5, comment: 'Great explanations and prompt feedback.', date: '2023-10-02' }
             ],
+            // Instructor assignments for admin (System Settings)
+            assignments: [
+                { id: 1, instructorId: 2, courseId: 1, assignedDate: '2023-08-01' },
+                { id: 2, instructorId: 5, courseId: 2, assignedDate: '2023-09-10' },
+                { id: 3, instructorId: 2, courseId: 3, assignedDate: '2023-10-05' }
+            ],
             activityLogs: [
                 { id: 1, userId: 1, activity: 'Logged in', timestamp: '2023-05-01 09:15:00' },
                 { id: 2, userId: 1, activity: 'Enrolled in course', timestamp: '2023-05-01 09:30:00' },
@@ -1207,7 +1213,8 @@
                 'users': 'User',
                 'content': 'Content',
                 'quizzes': 'Quiz',
-                'enrollments': 'Enrollment'
+                'enrollments': 'Enrollment',
+                'assignments': 'Assignment'
             };
             
             return names[itemType] || 'Item';
@@ -1385,6 +1392,26 @@
                             <select id="courseId" class="form-control" required>
                                 ${state.courses.map(c => `<option value="${c.id}" ${item && item.courseId == c.id ? 'selected' : ''}>${c.title}</option>`).join('')}
                             </select>
+                        </div>
+                    `;
+                    break;
+                case 'assignments':
+                    formHTML += `
+                        <div class="form-group">
+                            <label for="instructorId">Instructor</label>
+                            <select id="instructorId" class="form-control" required>
+                                ${state.users.filter(u => u.role === 'instructor').map(i => `<option value="${i.id}" ${item && item.instructorId == i.id ? 'selected' : ''}>${i.name} (ID ${i.id})</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="courseId">Course</label>
+                            <select id="courseId" class="form-control" required>
+                                ${state.courses.map(c => `<option value="${c.id}" ${item && item.courseId == c.id ? 'selected' : ''}>${c.title} (ID ${c.id})</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignedDate">Assigned Date</label>
+                            <input type="date" id="assignedDate" class="form-control" value="${item ? item.assignedDate : (new Date()).toISOString().split('T')[0]}">
                         </div>
                     `;
                     break;
@@ -2468,49 +2495,29 @@
         function renderSettings() {
             return `
                 <h2 class="page-title"><i class="fas fa-cogs"></i> System Settings</h2>
+        
+
                 <div class="table-container">
+                    <div class="table-header">
+                        <h3><i class="fas fa-user-tie"></i> Instructor Assignments</h3>
+                        <button class="btn add-btn" data-type="assignments"><i class="fas fa-plus"></i> Assign</button>
+                    </div>
                     <table>
                         <thead>
                             <tr>
-                                <th>Setting</th>
-                                <th>Current Value</th>
-                                <th>Description</th>
-                                <th>Actions</th>
+                                <th>Instructor ID</th>
+                                <th>Course ID</th>
+                                <th>Assigned Date</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>User Registration</td>
-                                <td>Enabled</td>
-                                <td>Allow new users to register</td>
-                                <td>
-                                    <button class="action-btn edit-btn" data-type="settings" data-id="1"><i class="fas fa-edit"></i> Edit</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Course Creation</td>
-                                <td>Instructors Only</td>
-                                <td>Who can create courses</td>
-                                <td>
-                                    <button class="action-btn edit-btn" data-type="settings" data-id="2"><i class="fas fa-edit"></i> Edit</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Certificate Auto-generation</td>
-                                <td>Enabled</td>
-                                <td>Automatically generate certificates upon course completion</td>
-                                <td>
-                                    <button class="action-btn edit-btn" data-type="settings" data-id="3"><i class="fas fa-edit"></i> Edit</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>AI Performance Analysis</td>
-                                <td>Enabled</td>
-                                <td>Use AI to analyze student performance</td>
-                                <td>
-                                    <button class="action-btn edit-btn" data-type="settings" data-id="4"><i class="fas fa-edit"></i> Edit</button>
-                                </td>
-                            </tr>
+                            ${state.assignments.map(a => `
+                                <tr>
+                                    <td>${a.instructorId}</td>
+                                    <td>${a.courseId}</td>
+                                    <td>${a.assignedDate}</td>
+                                </tr>
+                            `).join('')}
                         </tbody>
                     </table>
                 </div>
