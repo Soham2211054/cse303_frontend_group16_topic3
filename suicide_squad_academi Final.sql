@@ -25,7 +25,10 @@ SET time_zone = "+00:00";
 
 --
 -- Table structure for table `activity_log_t`
---
+
+
+CREATE DATABASE ssa_db;
+USE ssa_db;
 
 CREATE TABLE `activity_log_t` (
   `ActivityID` varchar(7) NOT NULL,
