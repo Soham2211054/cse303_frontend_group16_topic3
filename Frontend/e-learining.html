@@ -1674,9 +1674,11 @@
                 tableContent = `
                     <thead>
                         <tr>
+                            <th>Course ID</th>
                             <th>Course Title</th>
                             <th>Category</th>
                             <th>Difficulty</th>
+                            <th>Prerequisite CourseID</th>
                             <th>Instructor</th>
                             <th>Rating</th>
                             <th>Actions</th>
@@ -1685,9 +1687,11 @@
                     <tbody>
                         ${filteredCourses.map(course => `
                             <tr>
+                                <td>${course.id}</td>
                                 <td>${course.title}</td>
                                 <td>${course.category}</td>
                                 <td>${course.difficulty}</td>
+                                <td>${course.prerequisiteCourseIds && course.prerequisiteCourseIds.length ? course.prerequisiteCourseIds.join(', ') : '-'}</td>
                                 <td>${course.instructor}</td>
                                 <td>${course.rating} ⭐</td>
                                 <td>
@@ -1827,24 +1831,29 @@
                 tableContent = `
                     <thead>
                         <tr>
+                            <th>Content ID</th>
                             <th>Course ID</th>
                             <th>Course</th>
                             <th>Content Title</th>
                             <th>Type</th>
                             <th>Instructor</th>
+                            <th>Upload Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         ${myContent.map(cont => {
-                            const course = state.courses.find(c => c.id === cont.courseId);
+                            const course = state.courses.find(c => c.id === cont.courseId) || {};
+                            const uploadDate = cont.uploadDate || cont.createdAt || cont.date || 'N/A';
                             return `
                                 <tr>
-                                    <td>${course.id}</td>
-                                    <td>${course.title}</td>
+                                    <td>${cont.id}</td>
+                                    <td>${course.id || 'N/A'}</td>
+                                    <td>${course.title || 'N/A'}</td>
                                     <td>${cont.title}</td>
                                     <td>${cont.type}</td>
                                     <td>${cont.instructor}</td>
+                                    <td>${uploadDate}</td>
                                     <td>
                                         <button class="action-btn view-btn" data-type="content" data-id="${cont.id}"><i class="fas fa-eye"></i> View</button>
                                         <button class="action-btn"><i class="fas fa-download"></i> Download</button>
