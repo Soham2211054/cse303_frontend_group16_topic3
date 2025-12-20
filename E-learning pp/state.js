@@ -29,8 +29,8 @@ const state = {
         { id: 2, courseId: 2, title: 'Web Development Quiz', questions: 15, totalMarks: 150, description: 'Advanced web development quiz' }
     ],
     scores: [
-        { id: 1, studentId: 1, quizId: 1, score: 85, feedback: 'Good understanding of basics' },
-        { id: 2, studentId: 1, quizId: 2, score: 92, feedback: 'Excellent performance' }
+        { id: 1, studentId: 1, quizId: 1, score: 85, feedback: 'Good understanding of basics', date: '2023-05-10' },
+        { id: 2, studentId: 1, quizId: 2, score: 92, feedback: 'Excellent performance', date: '2023-05-12' }
     ],
     performanceReports: [
         { id: 1, studentId: 1, strengths: 'Problem solving, Algorithm design', weaknesses: 'Debugging complex code', recommendations: 'Practice more debugging exercises' }
