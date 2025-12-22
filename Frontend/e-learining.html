@@ -2185,18 +2185,19 @@ console.log('COURSES:', state.courses);
 
         // Additional rendering functions for other pages
         function renderCreateDiscussion() {
+n  // Use normalized state.discussions (populated from API); fallback to empty array
+  let filtered = state.discussions || [];
 
-  let filtered = state.studentDiscussions;
-
-  if (state.searchQuery) {
+n  if (state.searchQuery) {
+    const q = state.searchQuery.toLowerCase();
     filtered = filtered.filter(d =>
-      d.title.toLowerCase().includes(state.searchQuery) ||
-      d.topic.toLowerCase().includes(state.searchQuery) ||
-      d.courseId.toLowerCase().includes(state.searchQuery)
+      (d.title || '').toLowerCase().includes(q) ||
+      (d.topic || '').toLowerCase().includes(q) ||
+      String(d.courseId || '').toLowerCase().includes(q)
     );
   }
 
-  return `
+n  return `
     <h2 class="page-title"><i class="fas fa-comments"></i> Create Discussion</h2>
 
     <div class="table-container">
@@ -2206,7 +2207,7 @@ console.log('COURSES:', state.courses);
           <input type="text" class="search-input" placeholder="Search discussions..." value="${state.searchQuery}">
         </div>
 
-        <div>
+n        <div>
           <button class="btn add-btn" data-type="discussions">
             <i class="fas fa-plus"></i> Create Discussion Post
           </button>
@@ -2216,7 +2217,7 @@ console.log('COURSES:', state.courses);
         </div>
       </div>
 
-      <table>
+n      <table>
         <thead>
           <tr>
             <th>Discussion ID</th>
@@ -2227,13 +2228,14 @@ console.log('COURSES:', state.courses);
             <th>Discussion Date</th>
             <th>Duration</th>
             <th>Course ID</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
         <tbody>
           ${filtered.map(d => `
             <tr>
-              <td>${d.discussionId}</td>
+              <td>${d.id}</td>
               <td>${d.title}</td>
               <td>${d.studentId ?? '-'}</td>
               <td>${d.instructorId ?? '-'}</td>
@@ -2241,6 +2243,11 @@ console.log('COURSES:', state.courses);
               <td>${d.date}</td>
               <td>${d.duration ?? '-'}</td>
               <td>${d.courseId}</td>
+              <td>
+                <button class="action-btn view-btn" data-type="discussions" data-id="${d.id}"><i class="fas fa-eye"></i> View</button>
+                <button class="action-btn edit-btn" data-type="discussions" data-id="${d.id}"><i class="fas fa-edit"></i> Edit</button>
+                <button class="action-btn delete-btn delete" data-type="discussions" data-id="${d.id}"><i class="fas fa-trash"></i> Delete</button>
+              </td>
             </tr>
           `).join('')}
         </tbody>
