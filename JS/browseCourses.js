@@ -1,24 +1,18 @@
-fetch("/cse303_frontend_group16_topic3/api/api.php?action=browseCourses")
+fetch("../api/api.php?action=browseCourses")
   .then(res => res.json())
   .then(data => {
-    const body = document.getElementById("courseTableBody");
-    body.innerHTML = "";
 
-    data.forEach(course => {
-      body.innerHTML += `
-        <tr>
-          <td>${course.CourseID}</td>
-          <td>${course.CourseTitlle}</td>
-          <td>${course.CourseCetagory}</td>
-          <td>${course.DifficultyLvl}</td>
-          <td>${course.PreRequisiteCourseID ?? "-"}</td>
-          <td>${course.InstructorName ?? "-"}</td>
-          <td>${course.Rating ?? "N/A"} ⭐</td>
-          <td>
-            <a href="#">View</a> |
-            <a href="#">Enroll</a>
-          </td>
-        </tr>
-      `;
-    });
+    state.courses = data.map(course => ({
+      id: course.CourseID,
+      title: course.CourseTitlle,
+      category: course.CourseCetagory,
+      difficulty: course.DifficultyLvl,
+      instructor: course.InstructorName ?? "N/A",
+      rating: course.Rating ?? "N/A",
+      prerequisiteCourseIds: course.PreRequisiteCourseID
+        ? [course.PreRequisiteCourseID]
+        : []
+    }));
+
+    renderCurrentPage(); // THIS is the key
   });

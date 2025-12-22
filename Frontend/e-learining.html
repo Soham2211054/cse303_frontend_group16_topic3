@@ -618,13 +618,13 @@
                     <label for="username">
                         <i class="fas fa-user"></i> Login ID
                     </label>
-                    <input type="text" id="username" class="form-control" placeholder="Enter your login ID" required>
+                    <input type="text" id="username" class="form-control" placeholder="Enter your login ID" value="2211054" required>
                 </div>
                 <div class="form-group">
                     <label for="password">
                         <i class="fas fa-lock"></i> Password
                     </label>
-                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                    <input type="password" id="password" class="form-control" placeholder="Enter your password">
                 </div>
                 <button type="submit" class="btn btn-block">
                     <i class="fas fa-sign-in-alt"></i> Login
@@ -667,67 +667,67 @@
             editingItem: null,
             // Mock data for demonstration
             users: [
-                { id: 1, name: 'John Student', loginId: '2211054', password: '220154', role: 'student', goals: 'Learn programming', interests: 'Web Development' },
-                { id: 2, name: 'Jane Instructor', loginId: '2211054', password: '220154', role: 'instructor', expertise: 'Computer Science', qualification: 'PhD', email: 'jane.instructor@example.com' },
-                { id: 3, name: 'Admin User', loginId: '2211054', password: '220154', role: 'admin' },
-                { id: 4, name: 'Alice Johnson', loginId: '2211054', password: '220154', role: 'student', goals: 'Data Science', interests: 'Machine Learning' },
-                { id: 5, name: 'Bob Smith', loginId: '2211054', password: '220154', role: 'instructor', expertise: 'Mathematics', qualification: 'MSc', email: 'bob.smith@example.com' }
+                { id: 1, name: 'John Student', loginId: '2211054', password: '1234', role: 'student', goals: 'Learn programming', interests: 'Web Development' },
+                { id: 2, name: 'Jane Instructor', loginId: '2211054', password: '1234', role: 'instructor', expertise: 'Computer Science', qualification: 'PhD', email: 'jane.instructor@example.com' },
+                { id: 3, name: 'Admin User', loginId: '2211054', password: '1234', role: 'admin' },
+                { id: 4, name: 'Alice Johnson', loginId: '2211054', password: '1234', role: 'student', goals: 'Data Science', interests: 'Machine Learning' },
+                { id: 5, name: 'Bob Smith', loginId: '2211054', password: '1234', role: 'instructor', expertise: 'Mathematics', qualification: 'MSc', email: 'bob.smith@example.com' }
             ],
             courses: [
-                { id: 1, title: 'Introduction to Programming', category: 'Programming', difficulty: 'Beginner', instructor: 'Jane Instructor', rating: 4.5, description: 'Learn the basics of programming', prerequisiteCourseIds: [] },
-                { id: 2, title: 'Advanced Web Development', category: 'Web Development', difficulty: 'Advanced', instructor: 'John Doe', rating: 4.8, description: 'Master advanced web development concepts', prerequisiteCourseIds: [1] },
-                { id: 3, title: 'Data Science Fundamentals', category: 'Data Science', difficulty: 'Intermediate', instructor: 'Bob Smith', rating: 4.3, description: 'Introduction to data science and analytics', prerequisiteCourseIds: [] }
+                // { id: 1, title: 'Introduction to Programming', category: 'Programming', difficulty: 'Beginner', instructor: 'Jane Instructor', rating: 4.5, description: 'Learn the basics of programming', prerequisiteCourseIds: [] },
+                // { id: 2, title: 'Advanced Web Development', category: 'Web Development', difficulty: 'Advanced', instructor: 'John Doe', rating: 4.8, description: 'Master advanced web development concepts', prerequisiteCourseIds: [1] },
+                // { id: 3, title: 'Data Science Fundamentals', category: 'Data Science', difficulty: 'Intermediate', instructor: 'Bob Smith', rating: 4.3, description: 'Introduction to data science and analytics', prerequisiteCourseIds: [] }
             ],
             enrollments: [
-                { id: 1, studentId: 1, courseId: 1, enrollmentDate: '2023-01-15', status: 'In Progress', progress: 65 },
-                { id: 2, studentId: 1, courseId: 2, enrollmentDate: '2023-02-10', status: 'Completed', progress: 100 },
-                { id: 3, studentId: 4, courseId: 3, enrollmentDate: '2023-03-05', status: 'In Progress', progress: 30 }
+                // { id: 1, studentId: 1, courseId: 1, enrollmentDate: '2023-01-15', status: 'In Progress', progress: 65 },
+                // { id: 2, studentId: 1, courseId: 2, enrollmentDate: '2023-02-10', status: 'Completed', progress: 100 },
+                // { id: 3, studentId: 4, courseId: 3, enrollmentDate: '2023-03-05', status: 'In Progress', progress: 30 }
             ],
             content: [
-                { id: 1, courseId: 1, title: 'Introduction Video', type: 'Video', instructor: 'Jane Instructor', description: 'Welcome to the course' },
-                { id: 2, courseId: 1, title: 'Programming Basics PDF', type: 'PDF', instructor: 'Jane Instructor', description: 'Fundamental programming concepts' },
-                { id: 3, courseId: 2, title: 'HTML & CSS Tutorial', type: 'Video', instructor: 'John Doe', description: 'Web development basics' }
+                // { id: 1, courseId: 1, title: 'Introduction Video', type: 'Video', instructor: 'Jane Instructor', description: 'Welcome to the course' },
+                // { id: 2, courseId: 1, title: 'Programming Basics PDF', type: 'PDF', instructor: 'Jane Instructor', description: 'Fundamental programming concepts' },
+                // { id: 3, courseId: 2, title: 'HTML & CSS Tutorial', type: 'Video', instructor: 'John Doe', description: 'Web development basics' }
             ],
             quizzes: [
-                { id: 1, courseId: 1, title: 'Programming Basics Quiz', questions: 10, totalMarks: 100, date: '2023-09-15', duration: '30m', description: 'Test your programming knowledge' },
-                { id: 2, courseId: 2, title: 'Web Development Quiz', questions: 15, totalMarks: 150, date: '2023-10-05', duration: '45m', description: 'Advanced web development quiz' },
-                { id: 3, courseId: 3, title: 'Data Science Fundamentals Quiz', questions: 12, totalMarks: 120, date: '2023-11-01', duration: '35m', description: 'Data science basics' },
-                { id: 4, courseId: 1, title: 'Programming Midterm', questions: 20, totalMarks: 200, date: '2023-11-20', duration: '60m', description: 'Midterm assessment' },
-                { id: 5, courseId: 2, title: 'Frontend Frameworks Quiz', questions: 10, totalMarks: 100, date: '2023-12-01', duration: '25m', description: 'React & Vue basics' }
+                // { id: 1, courseId: 1, title: 'Programming Basics Quiz', questions: 10, totalMarks: 100, date: '2023-09-15', duration: '30m', description: 'Test your programming knowledge' },
+                // { id: 2, courseId: 2, title: 'Web Development Quiz', questions: 15, totalMarks: 150, date: '2023-10-05', duration: '45m', description: 'Advanced web development quiz' },
+                // { id: 3, courseId: 3, title: 'Data Science Fundamentals Quiz', questions: 12, totalMarks: 120, date: '2023-11-01', duration: '35m', description: 'Data science basics' },
+                // { id: 4, courseId: 1, title: 'Programming Midterm', questions: 20, totalMarks: 200, date: '2023-11-20', duration: '60m', description: 'Midterm assessment' },
+                // { id: 5, courseId: 2, title: 'Frontend Frameworks Quiz', questions: 10, totalMarks: 100, date: '2023-12-01', duration: '25m', description: 'React & Vue basics' }
             ],
             // Discussions data for instructor 'Create Discussion' section
             discussions: [
-                { id: 1, title: 'Week 1 - Intro Questions', studentId: 1, instructorId: 2, topic: 'Introduction', date: '2023-09-01', duration: '30m', courseId: 1 },
-                { id: 2, title: 'Advanced Topics Discussion', studentId: 4, instructorId: 5, topic: 'Advanced Web', date: '2023-10-10', duration: '45m', courseId: 2 },
-                { id: 3, title: 'Data Science Q&A', studentId: 1, instructorId: 5, topic: 'Data Science', date: '2023-11-05', duration: '40m', courseId: 3 },
-                { id: 4, title: 'Exam Prep', studentId: 4, instructorId: 2, topic: 'Exam Revision', date: '2023-11-18', duration: '60m', courseId: 1 },
-                { id: 5, title: 'Project Discussion', studentId: 1, instructorId: 2, topic: 'Capstone Project', date: '2023-12-02', duration: '50m', courseId: 2 }
+                // { id: 1, title: 'Week 1 - Intro Questions', studentId: 1, instructorId: 2, topic: 'Introduction', date: '2023-09-01', duration: '30m', courseId: 1 },
+                // { id: 2, title: 'Advanced Topics Discussion', studentId: 4, instructorId: 5, topic: 'Advanced Web', date: '2023-10-10', duration: '45m', courseId: 2 },
+                // { id: 3, title: 'Data Science Q&A', studentId: 1, instructorId: 5, topic: 'Data Science', date: '2023-11-05', duration: '40m', courseId: 3 },
+                // { id: 4, title: 'Exam Prep', studentId: 4, instructorId: 2, topic: 'Exam Revision', date: '2023-11-18', duration: '60m', courseId: 1 },
+                // { id: 5, title: 'Project Discussion', studentId: 1, instructorId: 2, topic: 'Capstone Project', date: '2023-12-02', duration: '50m', courseId: 2 }
             ],
             scores: [
-                { id: 1, studentId: 1, quizId: 1, score: 85, feedback: 'Good understanding of basics' },
-                { id: 2, studentId: 1, quizId: 2, score: 92, feedback: 'Excellent performance' }
+                // { id: 1, studentId: 1, quizId: 1, score: 85, feedback: 'Good understanding of basics' },
+                // { id: 2, studentId: 1, quizId: 2, score: 92, feedback: 'Excellent performance' }
             ],
             performanceReports: [
-                { id: 1, studentId: 1, insights: 'Stronger analytical reasoning observed; recommendation to increase practice on debugging workflows using test-driven development.', recommendations: 'Focus on debugging exercises, practice unit tests, and review algorithm challenges weekly.', strengthsAndWeaknesses: 'Strengths: Problem solving, algorithm design; Weaknesses: Debugging complex code' },
-                { id: 2, studentId: 4, insights: 'Good theoretical knowledge but needs more hands-on practice; suggestion to work on applied projects.', recommendations: 'Complete project-based assignments and participate in group discussions.', strengthsAndWeaknesses: 'Strengths: Conceptual understanding; Weaknesses: Practical implementation' }
+                // { id: 1, studentId: 1, insights: 'Stronger analytical reasoning observed; recommendation to increase practice on debugging workflows using test-driven development.', recommendations: 'Focus on debugging exercises, practice unit tests, and review algorithm challenges weekly.', strengthsAndWeaknesses: 'Strengths: Problem solving, algorithm design; Weaknesses: Debugging complex code' },
+                // { id: 2, studentId: 4, insights: 'Good theoretical knowledge but needs more hands-on practice; suggestion to work on applied projects.', recommendations: 'Complete project-based assignments and participate in group discussions.', strengthsAndWeaknesses: 'Strengths: Conceptual understanding; Weaknesses: Practical implementation' }
             ],
             reviews: [
-                { id: 1, topic: 'Course Content', rating: 4, comment: 'Well-structured material and clear examples.', date: '2023-09-20' },
-                { id: 2, topic: 'Instructor Effectiveness', rating: 5, comment: 'Great explanations and prompt feedback.', date: '2023-10-02' }
+                // { id: 1, topic: 'Course Content', rating: 4, comment: 'Well-structured material and clear examples.', date: '2023-09-20' },
+                // { id: 2, topic: 'Instructor Effectiveness', rating: 5, comment: 'Great explanations and prompt feedback.', date: '2023-10-02' }
             ],
             // Instructor assignments for admin (System Settings)
             assignments: [
-                { id: 1, instructorId: 2, courseId: 1, assignedDate: '2023-08-01' },
-                { id: 2, instructorId: 5, courseId: 2, assignedDate: '2023-09-10' },
-                { id: 3, instructorId: 2, courseId: 3, assignedDate: '2023-10-05' }
+                // { id: 1, instructorId: 2, courseId: 1, assignedDate: '2023-08-01' },
+                // { id: 2, instructorId: 5, courseId: 2, assignedDate: '2023-09-10' },
+                // { id: 3, instructorId: 2, courseId: 3, assignedDate: '2023-10-05' }
             ],
             activityLogs: [
-                { id: 1, userId: 1, activity: 'Logged in', timestamp: '2023-05-01 09:15:00' },
-                { id: 2, userId: 1, activity: 'Enrolled in course', timestamp: '2023-05-01 09:30:00' },
-                { id: 3, userId: 2, activity: 'Uploaded new content', timestamp: '2023-05-02 10:20:00' }
+                // { id: 1, userId: 1, activity: 'Logged in', timestamp: '2023-05-01 09:15:00' },
+                // { id: 2, userId: 1, activity: 'Enrolled in course', timestamp: '2023-05-01 09:30:00' },
+                // { id: 3, userId: 2, activity: 'Uploaded new content', timestamp: '2023-05-02 10:20:00' }
             ],
             certificates: [
-                { id: 1, studentId: 1, courseId: 2, issueDate: '2023-04-15', certificateId: 'CERT-0001' }
+                // { id: 1, studentId: 1, courseId: 2, issueDate: '2023-04-15', certificateId: 'CERT-0001' }
             ]
         };
 
@@ -801,12 +801,32 @@
 
         // Set up event listeners
         function setupEventListeners() {
-            // Role selection
+            // Role selection (individual click handlers)
             roleOptions.forEach(option => {
                 option.addEventListener('click', () => {
                     roleOptions.forEach(o => o.classList.remove('selected'));
                     option.classList.add('selected');
                 });
+            });
+
+            // Role selection (delegated handler on container) - makes selection work even if elements are re-rendered
+            const roleSelectorContainer = document.querySelector('.role-selector');
+            if (roleSelectorContainer) {
+                roleSelectorContainer.addEventListener('click', function(e) {
+                    const clicked = e.target.closest('.role-option');
+                    if (!clicked) return;
+                    roleOptions.forEach(o => o.classList.remove('selected'));
+                    clicked.classList.add('selected');
+                });
+            }
+
+            // Fallback: delegated click handler in case role option elements are re-rendered
+            document.addEventListener('click', function(e) {
+                const option = e.target.closest && e.target.closest('.role-option');
+                if (option) {
+                    document.querySelectorAll('.role-option').forEach(o => o.classList.remove('selected'));
+                    option.classList.add('selected');
+                }
             });
 
             // Login form submission
@@ -921,14 +941,24 @@
             
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
+            let role;
             const selectedRole = document.querySelector('.role-option.selected');
             
-            if (!selectedRole) {
-                alert('Please select a role');
-                return;
+            if (selectedRole) {
+                role = selectedRole.getAttribute('data-role');
+            } else {
+                // If no role selected, try to infer from loginId (useful for demo auto-login)
+                const inferred = state.users.find(u => u.loginId === username);
+                if (inferred) {
+                    role = inferred.role;
+                    // reflect selection in UI
+                    const optionToSelect = document.querySelector(`.role-option[data-role="${role}"]`);
+                    if (optionToSelect) optionToSelect.classList.add('selected');
+                } else {
+                    alert('Please select a role');
+                    return;
+                }
             }
-            
-            const role = selectedRole.getAttribute('data-role');
             
             // Simple authentication (in a real app, this would be a server call)
             // NOTE: Password validation intentionally skipped per config (allow any password);
@@ -1026,8 +1056,11 @@
                 case 'profile':
                     pageContent = renderProfile();
                     break;
-                case 'courses':
+                case 'courses':                      // Student: Browse Courses
                     pageContent = renderCourses();
+                    break;
+                case 'myCourses':
+                    pageContent = renderMyCourses(); // Instructor: My Courses
                     break;
                 case 'content':
                     pageContent = renderContent();
@@ -1066,7 +1099,7 @@
                     pageContent = renderEnrollments();
                     break;
                 case 'performance':
-                    pageContent = renderPerformance();
+                    pageContent = renderViewReport();
                     break;
                 case 'settings':
                     pageContent = renderSettings();
@@ -1606,7 +1639,7 @@
                                 <th>Login ID</th>
                                 <td>${state.currentUser.loginId}</td>
                             </tr>
-                            ${state.currentUser.role === 'instructor' ? `
+                            ${state.currentUser.role === 'instructor' || state.currentUser.role === 'student' ? `
                             <tr>
                                 <th>Email</th>
                                 <td>${state.currentUser.email || ''}</td>
@@ -1648,524 +1681,550 @@
         }
 
         function renderCourses() {
-            let tableContent = '';
-            let tableHeader = '';
-            
-            // Filter courses based on search query
-            let filteredCourses = state.courses;
-            if (state.searchQuery) {
-                filteredCourses = state.courses.filter(course => 
-                    course.title.toLowerCase().includes(state.searchQuery) ||
-                    course.category.toLowerCase().includes(state.searchQuery) ||
-                    course.instructor.toLowerCase().includes(state.searchQuery)
-                );
-            }
-            
-            if (state.currentRole === 'student') {
-                tableHeader = `
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search courses..." value="${state.searchQuery}">
-                        </div>
-                    </div>
-                `;
-                
-                tableContent = `
-                    <thead>
-                        <tr>
-                            <th>Course ID</th>
-                            <th>Course Title</th>
-                            <th>Category</th>
-                            <th>Difficulty</th>
-                            <th>Prerequisite CourseID</th>
-                            <th>Instructor</th>
-                            <th>Rating</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="courseTableBody">
-                        ${filteredCourses.map(course => `
-                            <tr>
-                                <td>${course.id}</td>
-                                <td>${course.title}</td>
-                                <td>${course.category}</td>
-                                <td>${course.difficulty}</td>
-                                <td>${course.prerequisiteCourseIds && course.prerequisiteCourseIds.length ? course.prerequisiteCourseIds.join(', ') : '-'}</td>
-                                <td>${course.instructor}</td>
-                                <td>${course.rating} ⭐</td>
-                                <td>
-                                    <button class="action-btn view-btn" data-type="courses" data-id="${course.id}"><i class="fas fa-eye"></i> View</button>
-                                    <button class="action-btn"><i class="fas fa-plus"></i> Enroll</button>
-                                </td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                `;
-            } else if (state.currentRole === 'instructor') {
-                const myCourses = filteredCourses.filter(c => c.instructor === state.currentUser.name);
-                
-                tableHeader = `
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search your courses..." value="${state.searchQuery}">
-                        </div>
-                        <button class="btn add-btn" data-type="courses"><i class="fas fa-plus"></i> Add Course</button>
-                    </div>
-                `;
-                
-                tableContent = `
-                    <thead>
-                        <tr>
-                            <th>Course ID</th>
-                            <th>Course Title</th>
-                            <th>Category</th>
-                            <th>Difficulty</th>
-                            <th>Prerequisite CourseID</th>
-                            <th>Enrollments</th>
-                            <th>Rating</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${myCourses.map(course => {
-                            const enrollments = state.enrollments.filter(e => e.courseId === course.id).length;
-                            return `
-                                <tr>
-                                    <td>${course.id}</td>
-                                    <td>${course.title}</td>
-                                    <td>${course.category}</td>
-                                    <td>${course.difficulty}</td>
-                                    <td>${course.prerequisiteCourseIds && course.prerequisiteCourseIds.length > 0 ? course.prerequisiteCourseIds.map(pid => (state.courses.find(c => c.id === pid) || {}).title || pid).join(', ') : '-'}</td>
-                                    <td>${enrollments}</td>
-                                    <td>${course.rating} ⭐</td>
-                                    <td>
-                                        <button class="action-btn edit-btn" data-type="courses" data-id="${course.id}"><i class="fas fa-edit"></i> Edit</button>
-                                        <button class="action-btn view-btn" data-type="courses" data-id="${course.id}"><i class="fas fa-chart-bar"></i> Analytics</button>
-                                        <button class="action-btn delete delete-btn" data-type="courses" data-id="${course.id}"><i class="fas fa-trash"></i> Delete</button>
-                                    </td>
-                                </tr>
-                            `;
-                        }).join('')}
-                    </tbody>
-                `;
-            } else if (state.currentRole === 'admin') {
-                tableHeader = `
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search courses..." value="${state.searchQuery}">
-                        </div>
-                    </div>
-                `;
-                
-                tableContent = `
-                    <thead>
-                        <tr>
-                            <th>Course Title</th>
-                            <th>Category</th>
-                            <th>Difficulty</th>
-                            <th>Instructor</th>
-                            <th>Rating</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${filteredCourses.map(course => `
-                            <tr>
-                                <td>${course.title}</td>
-                                <td>${course.category}</td>
-                                <td>${course.difficulty}</td>
-                                <td>${course.instructor}</td>
-                                <td>${course.rating} ⭐</td>
-                                <td>Active</td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                `;
-            }
-            
-            return `
-                <h2 class="page-title"><i class="fas fa-book"></i> ${state.currentRole === 'student' ? 'Browse Courses' : state.currentRole === 'instructor' ? 'My Courses' : 'Course Management'}</h2>
-                <div class="table-container">
-                    ${tableHeader}
-                    <table>
-                        ${tableContent}
-                    </table>
-                </div>
-            `;
-        }
+            console.log('ROLE:', state.currentUser.role);
+console.log('MY COURSES:', state.myCourses);
+console.log('COURSES:', state.courses);
+
+  let tableContent = '';
+  let tableHeader = '';
+
+  // Decide base data source by role
+  const baseCourses =
+    state.currentUser.role === 'instructor'
+      ? state.myCourses
+      : state.courses;
+
+  // Apply search filter (SAFE for all roles)
+  let filteredCourses = baseCourses;
+  if (state.searchQuery) {
+    filteredCourses = baseCourses.filter(course =>
+      course.title.toLowerCase().includes(state.searchQuery) ||
+      course.category.toLowerCase().includes(state.searchQuery)
+    );
+  }
+
+  /* ===================== STUDENT ===================== */
+  if (state.currentUser.role === 'student') {
+
+    tableHeader = `
+      <div class="table-header">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" class="search-input"
+                 placeholder="Search courses..."
+                 value="${state.searchQuery}">
+        </div>
+      </div>
+    `;
+
+    tableContent = `
+      <thead>
+        <tr>
+          <th>Course ID</th>
+          <th>Course Title</th>
+          <th>Category</th>
+          <th>Difficulty</th>
+          <th>Prerequisite CourseID</th>
+          <th>Instructor</th>
+          <th>Rating</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${filteredCourses.map(course => `
+          <tr>
+            <td>${course.id}</td>
+            <td>${course.title}</td>
+            <td>${course.category}</td>
+            <td>${course.difficulty}</td>
+            <td>${
+              course.prerequisiteCourseIds?.length
+                ? course.prerequisiteCourseIds.join(', ')
+                : '-'
+            }</td>
+            <td>${course.instructor}</td>
+            <td>${course.rating ?? 'N/A'} ⭐</td>
+            <td>
+              <button class="action-btn view-btn">
+                <i class="fas fa-eye"></i> View
+              </button>
+              <button class="action-btn">
+                <i class="fas fa-plus"></i> Enroll
+              </button>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    `;
+  }
+
+//   /* ===================== INSTRUCTOR ===================== */
+//   else if (state.currentUser.role === 'instructor') {
+
+//     tableHeader = `
+//       <div class="table-header">
+//         <div class="search-box">
+//           <i class="fas fa-search"></i>
+//           <input type="text" class="search-input"
+//                  placeholder="Search your courses..."
+//                  value="${state.searchQuery}">
+//         </div>
+//         <button class="btn add-btn">
+//           <i class="fas fa-plus"></i> Add Course
+//         </button>
+//       </div>
+//     `;
+
+//     tableContent = `
+//       <thead>
+//         <tr>
+//           <th>Course ID</th>
+//           <th>Course Title</th>
+//           <th>Category</th>
+//           <th>Difficulty</th>
+//           <th>Prerequisite CourseID</th>
+//           <th>Enrollments</th>
+//           <th>Rating</th>
+//           <th>Actions</th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         ${filteredCourses.map(course => `
+//           <tr>
+//             <td>${course.courseId}</td>
+//             <td>${course.title}</td>
+//             <td>${course.category}</td>
+//             <td>${course.difficulty}</td>
+//             <td>${course.prerequisite ?? '-'}</td>
+//             <td>${course.enrollments ?? 0}</td>
+//             <td>${course.rating ?? 'N/A'} ⭐</td>
+//             <td>
+//               <button class="action-btn edit-btn">
+//                 <i class="fas fa-edit"></i> Edit
+//               </button>
+//               <button class="action-btn view-btn">
+//                 <i class="fas fa-chart-bar"></i> Analytics
+//               </button>
+//               <button class="action-btn delete delete-btn">
+//                 <i class="fas fa-trash"></i> Delete
+//               </button>
+//             </td>
+//           </tr>
+//         `).join('')}
+//       </tbody>
+//     `;
+//   }
+
+//   /* ===================== ADMIN ===================== */
+//   else if (state.currentUser.role === 'admin') {
+
+//     tableHeader = `
+//       <div class="table-header">
+//         <div class="search-box">
+//           <i class="fas fa-search"></i>
+//           <input type="text" class="search-input"
+//                  placeholder="Search courses..."
+//                  value="${state.searchQuery}">
+//         </div>
+//       </div>
+//     `;
+
+//     tableContent = `
+//       <thead>
+//         <tr>
+//           <th>Course Title</th>
+//           <th>Category</th>
+//           <th>Difficulty</th>
+//           <th>Instructor</th>
+//           <th>Rating</th>
+//           <th>Status</th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         ${filteredCourses.map(course => `
+//           <tr>
+//             <td>${course.title}</td>
+//             <td>${course.category}</td>
+//             <td>${course.difficulty}</td>
+//             <td>${course.instructor}</td>
+//             <td>${course.rating ?? 'N/A'} ⭐</td>
+//             <td>Active</td>
+//           </tr>
+//         `).join('')}
+//       </tbody>
+//     `;
+//   }
+
+  /* ===================== FINAL RENDER ===================== */
+  return `
+    <h2 class="page-title">
+      <i class="fas fa-book"></i>
+      ${
+        state.currentUser.role === 'student'
+          ? 'Browse Courses'
+          : state.currentUser.role === 'instructor'
+          ? 'My Courses'
+          : 'Course Management'
+      }
+    </h2>
+
+    <div class="table-container">
+      ${tableHeader}
+      <table>
+        ${tableContent}
+      </table>
+    </div>
+  `;
+}
+
+        function renderMyCourses() {
+            console.log('ROLE:', state.currentUser.role);
+console.log('MY COURSES:', state.myCourses);
+console.log('COURSES:', state.courses);
+
+  let tableContent = '';
+  let tableHeader = '';
+
+  // Decide base data source by role
+  const baseCourses =
+    state.currentUser.role === 'instructor'
+      ? state.myCourses
+      : state.courses;
+
+  // Apply search filter (SAFE for all roles)
+  let filteredCourses = baseCourses;
+  if (state.searchQuery) {
+    const q = state.searchQuery.toLowerCase();
+    filteredCourses = baseCourses.filter(course =>
+      (course.title || '').toLowerCase().includes(q) ||
+      (course.category || '').toLowerCase().includes(q)
+    );
+  }
+
+//   const courses = state.myCourses || [];
+
+  if (state.currentUser.role === 'instructor') {
+
+    tableHeader = `
+      <div class="table-header">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" class="search-input"
+                 placeholder="Search courses..."
+                 value="${state.searchQuery}">
+        </div>
+      </div>
+    `;
+
+    tableContent = `
+      <thead>
+        <tr>
+          <th>Course ID</th>
+          <th>Course Title</th>
+          <th>Category</th>
+          <th>Difficulty</th>
+          <th>Prerequisite CourseID</th>
+          <th>Enrollments</th>
+          <th>Rating</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${filteredCourses.map(course => `
+          <tr>
+            <td>${course.id}</td>
+            <td>${course.title}</td>
+            <td>${course.category}</td>
+            <td>${course.difficulty}</td>
+            <td>${
+              course.prerequisiteCourseIds?.length
+                ? course.prerequisiteCourseIds.join(', ')
+                : '-'
+            }</td>
+            <td>${course.enrollments ?? 0}</td>
+            <td>${course.rating ?? 'N/A'} ⭐</td>
+            <td>
+              <button class="action-btn edit-btn" data-type="courses" data-id="${course.id}">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+              <button class="action-btn view-btn" data-type="courses" data-id="${course.id}">
+                <i class="fas fa-chart-bar"></i> Analytics
+              </button>
+              <button class="action-btn delete-btn delete" data-type="courses" data-id="${course.id}">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    `;
+  }
+
+  return `
+    <h2 class="page-title">
+      <i class="fas fa-book"></i>
+      ${
+        state.currentUser.role === 'student'
+          ? 'Browse Courses'
+          : state.currentUser.role === 'instructor'
+          ? 'My Courses'
+          : 'Course Management'
+      }
+    </h2>
+
+    <div class="table-container">
+      ${tableHeader}
+      <table>
+        ${tableContent}
+      </table>
+    </div>
+  `;
+}
 
         function renderContent() {
-            let tableContent = '';
-            let tableHeader = '';
-            
-            // Filter content based on search query
-            let filteredContent = state.content;
-            if (state.searchQuery) {
-                filteredContent = state.content.filter(item => 
-                    item.title.toLowerCase().includes(state.searchQuery) ||
-                    item.type.toLowerCase().includes(state.searchQuery)
-                );
-            }
-            
-            if (state.currentRole === 'student') {
-                const myEnrollments = state.enrollments.filter(e => e.studentId === state.currentUser.id);
-                const myCourses = state.courses.filter(c => 
-                    myEnrollments.some(e => e.courseId === c.id)
-                );
-                const myContent = filteredContent.filter(cont => 
-                    myCourses.some(c => c.id === cont.courseId)
-                );
-                
-                tableHeader = `
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search content..." value="${state.searchQuery}">
-                        </div>
-                    </div>
-                `;
-                
-                tableContent = `
-                    <thead>
-                        <tr>
-                            <th>Content ID</th>
-                            <th>Course ID</th>
-                            <th>Course</th>
-                            <th>Content Title</th>
-                            <th>Type</th>
-                            <th>Instructor</th>
-                            <th>Upload Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${myContent.map(cont => {
-                            const course = state.courses.find(c => c.id === cont.courseId) || {};
-                            const uploadDate = cont.uploadDate || cont.createdAt || cont.date || 'N/A';
-                            return `
-                                <tr>
-                                    <td>${cont.id}</td>
-                                    <td>${course.id || 'N/A'}</td>
-                                    <td>${course.title || 'N/A'}</td>
-                                    <td>${cont.title}</td>
-                                    <td>${cont.type}</td>
-                                    <td>${cont.instructor}</td>
-                                    <td>${uploadDate}</td>
-                                    <td>
-                                        <button class="action-btn view-btn" data-type="content" data-id="${cont.id}"><i class="fas fa-eye"></i> View</button>
-                                        <button class="action-btn"><i class="fas fa-download"></i> Download</button>
-                                    </td>
-                                </tr>
-                            `;
-                        }).join('')}
-                    </tbody>
-                `;
-            } else if (state.currentRole === 'instructor') {
-                const myCourses = state.courses.filter(c => c.instructor === state.currentUser.name);
-                const myContent = filteredContent.filter(cont => 
-                    myCourses.some(c => c.id === cont.courseId)
-                );
-                
-                tableHeader = `
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search your content..." value="${state.searchQuery}">
-                        </div>
-                        <button class="btn add-btn" data-type="content"><i class="fas fa-plus"></i> Add Content</button>
-                    </div>
-                `;
-                
-                tableContent = `
-                    <thead>
-                        <tr>
-                            <th>Course ID</th>
-                            <th>Course</th>
-                            <th>Content Title</th>
-                            <th>Type</th>
-                            <th>Upload Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${myContent.map(cont => {
-                            const course = state.courses.find(c => c.id === cont.courseId);
-                            return `
-                                <tr>
-                                    <td>${course.id}</td>
-                                    <td>${course.title}</td>
-                                    <td>${cont.title}</td>
-                                    <td>${cont.type}</td>
-                                    <td>2023-04-15</td>
-                                    <td>
-                                        <button class="action-btn edit-btn" data-type="content" data-id="${cont.id}"><i class="fas fa-edit"></i> Edit</button>
-                                        <button class="action-btn delete delete-btn" data-type="content" data-id="${cont.id}"><i class="fas fa-trash"></i> Delete</button>
-                                    </td>
-                                </tr>
-                            `;
-                        }).join('')}
-                    </tbody>
-                `;
-            } else if (state.currentRole === 'admin') {
-                tableHeader = `
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search content..." value="${state.searchQuery}">
-                        </div>
-                    </div>
-                `;
-                
-                tableContent = `
-                    <thead>
-                        <tr>
-                            <th>Course ID</th>
-                            <th>Course</th>
-                            <th>Content Title</th>
-                            <th>Type</th>
-                            <th>Instructor</th>
-                            <th>Upload Date</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${filteredContent.map(cont => {
-                            const course = state.courses.find(c => c.id === cont.courseId);
-                            return `
-                                <tr>
-                                    <td>${course.id}</td>
-                                    <td>${course.title}</td>
-                                    <td>${cont.title}</td>
-                                    <td>${cont.type}</td>
-                                    <td>${cont.instructor}</td>
-                                    <td>2023-04-15</td>
-                                    <td>Approved</td>
-                                </tr>
-                            `;
-                        }).join('')}
-                    </tbody>
-                `;
-            }
-            
-            return `
-                <h2 class="page-title"><i class="fas fa-file-alt"></i> ${state.currentRole === 'student' ? 'Course Content' : 'Content Management'}</h2>
-                <div class="table-container">
-                    ${tableHeader}
-                    <table>
-                        ${tableContent}
-                    </table>
-                </div>
-            `;
-        }
+
+  let filteredContent = state.courseContents;
+
+  return `
+    <h2 class="page-title"><i class="fas fa-file-alt"></i> Course Content</h2>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Content ID</th>
+            <th>Course ID</th>
+            <th>Course Title</th>
+            <th>Content Title</th>
+            <th>Type</th>
+            <th>Instructor</th>
+            <th>Upload Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${filteredContent.map(content => `
+            <tr>
+              <td>${content.contentId}</td>
+              <td>${content.courseId}</td>
+              <td>${content.courseTitle}</td>
+              <td>${content.contentTitle}</td>
+              <td>${content.type}</td>
+              <td>${content.instructor}</td>
+              <td>${content.uploadDate}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
 
         function renderProgress() {
-            const myEnrollments = state.enrollments.filter(e => e.studentId === state.currentUser.id);
-            
-            return `
-                <h2 class="page-title"><i class="fas fa-chart-line"></i> My Progress</h2>
-                <div class="table-container">
-                    <table>
-                                <thead>
-                            <tr>
-                                <th>Student ID</th>
-                                <th>Course ID</th>
-                                <th>Course</th>
-                                <th>Enrollment Date</th>
-                                <th>Lesson Completion Status</th>
-                                <th>Course Completion Status (Percentage)</th>
-                                <th>Score</th>
-                                <th>Time Spent</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${myEnrollments.map(enrollment => {
-                                const course = state.courses.find(c => c.id === enrollment.courseId) || {};
-                                const studentId = state.currentUser.id;
-                                const courseQuizIds = state.quizzes.filter(q => q.courseId === enrollment.courseId).map(q => q.id);
-                                const scoresForCourse = state.scores.filter(s => s.studentId === studentId && courseQuizIds.includes(s.quizId));
-                                const avgScore = scoresForCourse.length > 0 ? Math.round(scoresForCourse.reduce((a,b) => a + b.score, 0) / scoresForCourse.length) : 'N/A';
-                                const lessonStatus = enrollment.LessonCompletationStatus || enrollment.lessonStatus || (enrollment.status ? `Lesson 1 ${enrollment.status}` : 'N/A');
-                                return `
-                                    <tr>
-                                        <td>${studentId}</td>
-                                        <td>${course.id || 'N/A'}</td>
-                                        <td>${course.title || 'N/A'}</td>
-                                        <td>${enrollment.enrollmentDate || 'N/A'}</td>
-                                        <td>${lessonStatus}</td>
-                                        <td>
-                                            <div class="progress-container">
-                                                <div class="progress-bar" style="width: ${enrollment.progress || 0}%;"></div>
-                                            </div>
-                                            <small>${enrollment.progress != null ? enrollment.progress + '%' : 'N/A'}</small>
-                                        </td>
-                                        <td>${avgScore !== 'N/A' ? avgScore + '%' : 'N/A'}</td>
-                                        <td>${enrollment.TimeSpend != null ? enrollment.TimeSpend : '0'} hours</td>
-                                    </tr>
-                                `;
-                            }).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-        }
+
+  /* ===================== STUDENT ===================== */
+  if (state.currentUser.role === 'student') {
+
+    const progress = state.myProgress || [];
+
+    return `
+      <h2 class="page-title">
+        <i class="fas fa-chart-line"></i> My Progress
+      </h2>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Course ID</th>
+              <th>Course</th>
+              <th>Enrollment Date</th>
+              <th>Lesson Completion Status</th>
+              <th>Course Completion Status (%)</th>
+              <th>Score</th>
+              <th>Time Spent</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            ${
+              progress.length
+                ? progress.map(p => `
+                  <tr>
+                    <td>${p.studentId}</td>
+                    <td>${p.courseId}</td>
+                    <td>${p.course}</td>
+                    <td>${p.enrollmentDate}</td>
+                    <td>${p.lessonStatus}</td>
+                    <td>${p.completion}</td>
+                    <td>${p.score}</td>
+                    <td>${p.timeSpent}</td>
+                  </tr>
+                `).join('')
+                : `<tr><td colspan="8">No progress data found</td></tr>`
+            }
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  /* ===================== INSTRUCTOR ===================== */
+  if (state.currentUser.role === 'instructor') {
+    return renderStudentProgressInstructor();
+  }
+
+  return '';
+}
+
+        function renderStudentProgressInstructor() {
+
+  const progress = state.studentProgress || [];
+
+  return `
+    <h2 class="page-title">
+      <i class="fas fa-user-graduate"></i> Student Progress
+    </h2>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Login ID</th>
+            <th>Enrolled Courses</th>
+            <th>Average Progress</th>
+            <th>Last Activity</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${
+            progress.length
+              ? progress.map(p => `
+                <tr>
+                  <td>${p.loginId}</td>
+                  <td>${p.enrolledCourses}</td>
+                  <td>${p.averageProgress}%</td>
+                  <td>${p.lastActivity}</td>
+                </tr>
+              `).join('')
+              : `<tr><td colspan="4">No student progress found</td></tr>`
+          }
+        </tbody>
+      </table>
+    </div>
+  `;
+}
 
         function renderAssessments() {
-            let tableContent = '';
-            let tableHeader = '';
-            
-            if (state.currentRole === 'student') {
-                const myScores = state.scores.filter(s => s.studentId === state.currentUser.id);
-                
-                tableHeader = `
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search assessments..." value="${state.searchQuery}">
-                        </div>
-                    </div>
-                `;
-                
-                tableContent = `
-                    <thead>
-                        <tr>
-                            <th>Quiz ID</th>
-                            <th>Course Title</th>
-                            <th>Score</th>
-                            <th>Feedback</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${myScores.map(score => {
-                            const quiz = state.quizzes.find(q => q.id === score.quizId) || {};
-                            const course = state.courses.find(c => c.id === (quiz.courseId || null)) || {};
-                            const date = score.date || score.submittedAt || 'N/A';
-                            return `
-                                <tr>
-                                    <td>${quiz.id || 'N/A'}</td>
-                                    <td>${course.title || 'N/A'}</td>
-                                    <td>${score.score}%</td>
-                                    <td>${score.feedback || 'N/A'}</td>
-                                    <td>${date}</td>
-                                </tr>
-                            `;
-                        }).join('')}
-                    </tbody>
-                `;
-            } else if (state.currentRole === 'instructor') {
-                const myCourses = state.courses.filter(c => c.instructor === state.currentUser.name);
-                const myQuizzes = state.quizzes.filter(q => 
-                    myCourses.some(c => c.id === q.courseId)
-                );
-                
-                tableHeader = `
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search quizzes..." value="${state.searchQuery}">
-                        </div>
-                        <button class="btn add-btn" data-type="quizzes"><i class="fas fa-plus"></i> Add Quiz</button>
-                    </div>
-                `;
-                
-                tableContent = `
-                    <thead>
-                        <tr>
-                            <th>Quiz</th>
-                            <th>Course</th>
-                            <th>Questions</th>
-                            <th>Total Marks</th>
-                            <th>Average Score</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${myQuizzes.map(quiz => {
-                            const course = state.courses.find(c => c.id === quiz.courseId);
-                            const scores = state.scores.filter(s => s.quizId === quiz.id);
-                            const avgScore = scores.length > 0 ? 
-                                scores.reduce((acc, curr) => acc + curr.score, 0) / scores.length : 0;
-                            
-                            return `
-                                <tr>
-                                    <td>${quiz.title}</td>
-                                    <td>${course.title}</td>
-                                    <td>${quiz.questions}</td>
-                                    <td>${quiz.totalMarks}</td>
-                                    <td>${avgScore.toFixed(1)}%</td>
-                                    <td>
-                                        <button class="action-btn edit-btn" data-type="quizzes" data-id="${quiz.id}"><i class="fas fa-edit"></i> Edit</button>
-                                        <button class="action-btn view-btn" data-type="quizzes" data-id="${quiz.id}"><i class="fas fa-chart-bar"></i> Results</button>
-                                        <button class="action-btn delete delete-btn" data-type="quizzes" data-id="${quiz.id}"><i class="fas fa-trash"></i> Delete</button>
-                                    </td>
-                                </tr>
-                            `;
-                        }).join('')}
-                    </tbody>
-                `;
-            }
-            
-            return `
-                <h2 class="page-title"><i class="fas fa-tasks"></i> Assessments</h2>
-                <div class="table-container">
-                    ${tableHeader}
-                    <table>
-                        ${tableContent}
-                    </table>
-                </div>
-            `;
-        }
+
+  let data = state.assessments;
+
+  return `
+    <h2 class="page-title">
+      <i class="fas fa-tasks"></i> Assessments
+    </h2>
+
+    <div class="table-container">
+      <div class="table-header">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" class="search-input" placeholder="Search assessments..." value="${state.searchQuery}">
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Quiz ID</th>
+            <th>Course Title</th>
+            <th>Score</th>
+            <th>Feedback</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${data.map(a => `
+            <tr>
+              <td>${a.quizId}</td>
+              <td>${a.courseTitle}</td>
+              <td>${a.score}</td>
+              <td>${a.feedback}</td>
+              <td>${a.date}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
 
         // Additional rendering functions for other pages
         function renderCreateDiscussion() {
-            const discussions = state.discussions;
-            return `
-                <h2 class="page-title"><i class="fas fa-comments"></i> Create Discussion</h2>
-                <div class="table-container">
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search discussions..." value="${state.searchQuery}">
-                        </div>
-                        <div style="display:flex; gap:8px; align-items:center;">
-                            <button class="btn add-btn" data-type="discussions"><i class="fas fa-plus"></i> Create Discussion Post</button>
-                            <button class="btn join-btn"><i class="fas fa-sign-in-alt"></i> Join Discussion Post</button>
-                        </div>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Discussion ID</th>
-                                <th>Discussion Title</th>
-                                <th>Student ID</th>
-                                <th>Instructor ID</th>
-                                <th>Topic</th>
-                                <th>Discussion Date</th>
-                                <th>Duration</th>
-                                <th>Course ID</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${discussions.map(d => `
-                                <tr>
-                                    <td>${d.id}</td>
-                                    <td>${d.title}</td>
-                                    <td>${d.studentId}</td>
-                                    <td>${d.instructorId}</td>
-                                    <td>${d.topic}</td>
-                                    <td>${d.date}</td>
-                                    <td>${d.duration}</td>
-                                    <td>${d.courseId}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-        }
+
+  let filtered = state.studentDiscussions;
+
+  if (state.searchQuery) {
+    filtered = filtered.filter(d =>
+      d.title.toLowerCase().includes(state.searchQuery) ||
+      d.topic.toLowerCase().includes(state.searchQuery) ||
+      d.courseId.toLowerCase().includes(state.searchQuery)
+    );
+  }
+
+  return `
+    <h2 class="page-title"><i class="fas fa-comments"></i> Create Discussion</h2>
+
+    <div class="table-container">
+      <div class="table-header">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" class="search-input" placeholder="Search discussions..." value="${state.searchQuery}">
+        </div>
+
+        <div>
+          <button class="btn add-btn" data-type="discussions">
+            <i class="fas fa-plus"></i> Create Discussion Post
+          </button>
+          <button class="btn btn-warning join-btn">
+            <i class="fas fa-sign-in-alt"></i> Join Discussion Post
+          </button>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Discussion ID</th>
+            <th>Discussion Title</th>
+            <th>Student ID</th>
+            <th>Instructor ID</th>
+            <th>Topic</th>
+            <th>Discussion Date</th>
+            <th>Duration</th>
+            <th>Course ID</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${filtered.map(d => `
+            <tr>
+              <td>${d.discussionId}</td>
+              <td>${d.title}</td>
+              <td>${d.studentId ?? '-'}</td>
+              <td>${d.instructorId ?? '-'}</td>
+              <td>${d.topic}</td>
+              <td>${d.date}</td>
+              <td>${d.duration ?? '-'}</td>
+              <td>${d.courseId}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
 
         function renderCreateQuiz() {
             const quizzes = state.quizzes;
@@ -2208,109 +2267,126 @@
         }
 
         function renderStudentPerformanceReport() {
-            const reports = state.performanceReports.filter(r => r.studentId === state.currentUser.id);
-            return `
-                <h2 class="page-title"><i class="fas fa-chart-bar"></i> Performance Report</h2>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Performance Report ID</th>
-                                <th>AI-generated Insights</th>
-                                <th>Learning Recommendations</th>
-                                <th>Student Strength And Weakness</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${reports.map(r => `
-                                <tr>
-                                    <td>${r.id}</td>
-                                    <td>${r.insights}</td>
-                                    <td>${r.recommendations}</td>
-                                    <td>${r.strengthsAndWeaknesses}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-        }
+
+  let data = state.performanceReports;
+
+  return `
+    <h2 class="page-title">
+      <i class="fas fa-clipboard-list"></i> Performance Report
+    </h2>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Performance Report ID</th>
+            <th>AI-generated Insights</th>
+            <th>Learning Recommendations</th>
+            <th>Student Strength And Weakness</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${data.map(r => `
+            <tr>
+              <td>${r.reportId}</td>
+              <td>${r.insights}</td>
+              <td>${r.recommendations}</td>
+              <td>${r.strengthsWeaknesses}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
 
         function renderGiveReview() {
-            const reviews = state.reviews;
-            return `
-                <h2 class="page-title"><i class="fas fa-star"></i> Give Review</h2>
-                <div class="table-container">
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search reviews..." value="${state.searchQuery}">
-                        </div>
-                        <button class="btn add-btn" data-type="reviews"><i class="fas fa-star"></i> Review</button>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Review Topic</th>
-                                <th>Rating</th>
-                                <th>Comment</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${reviews.map(rv => `
-                                <tr>
-                                    <td>${rv.topic}</td>
-                                    <td>${rv.rating}</td>
-                                    <td>${rv.comment}</td>
-                                    <td>${rv.date}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-        }
+
+  let data = state.reviews;
+
+  return `
+    <h2 class="page-title">
+      <i class="fas fa-star"></i> Give Review
+    </h2>
+
+    <div class="table-container">
+      <div class="table-header">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" class="search-input" placeholder="Search reviews..." value="${state.searchQuery}">
+        </div>
+
+        <button class="btn add-btn">
+          <i class="fas fa-star"></i> Review
+        </button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Review Topic</th>
+            <th>Rating</th>
+            <th>Comment</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${data.map(r => `
+            <tr>
+              <td>${r.topic}</td>
+              <td>${r.rating}</td>
+              <td>${r.comment}</td>
+              <td>${r.date}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
 
         // Additional rendering functions for other pages
         function renderCertificates() {
-            const completedEnrollments = state.enrollments.filter(
-                e => e.studentId === state.currentUser.id && e.status === 'Completed'
-            );
-            
-            return `
-                <h2 class="page-title"><i class="fas fa-award"></i> My Certificates</h2>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Course</th>
-                                <th>Completion Date</th>
-                                <th>Certificate ID</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${completedEnrollments.map(enrollment => {
-                                const course = state.courses.find(c => c.id === enrollment.courseId);
-                                const certificate = state.certificates.find(c => c.courseId === enrollment.courseId && c.studentId === state.currentUser.id);
-                                return `
-                                    <tr>
-                                        <td>${course.title}</td>
-                                        <td>${enrollment.enrollmentDate}</td>
-                                        <td>${certificate ? certificate.certificateId : 'Pending'}</td>
-                                        <td>
-                                            <button class="action-btn view-btn" data-type="certificates" data-id="${certificate ? certificate.id : ''}"><i class="fas fa-eye"></i> View</button>
-                                            <button class="action-btn"><i class="fas fa-download"></i> Download</button>
-                                        </td>
-                                    </tr>
-                                `;
-                            }).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-        }
+
+  let data = state.certificates;
+
+  return `
+    <h2 class="page-title">
+      <i class="fas fa-certificate"></i> My Certificates
+    </h2>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Course</th>
+            <th>Completion Date</th>
+            <th>Certificate ID</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${data.map(c => `
+            <tr>
+              <td>${c.course}</td>
+              <td>${c.completionDate}</td>
+              <td>${c.certificateId}</td>
+              <td>
+                <button class="btn btn-primary btn-sm">
+                  <i class="fas fa-download"></i> Download
+                </button>
+              </td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
 
         function renderStudents() {
             const myCourses = state.courses.filter(c => c.instructor === state.currentUser.name);
@@ -2364,197 +2440,212 @@
         }
 
         function renderUsers() {
-            // Filter users based on search query
-            let filteredUsers = state.users;
-            if (state.searchQuery) {
-                filteredUsers = state.users.filter(user => 
-                    user.name.toLowerCase().includes(state.searchQuery) ||
-                    user.loginId.toLowerCase().includes(state.searchQuery) ||
-                    user.role.toLowerCase().includes(state.searchQuery)
-                );
-            }
-            
-            return `
-                <h2 class="page-title"><i class="fas fa-users"></i> User Management</h2>
-                <div class="table-container">
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search users..." value="${state.searchQuery}">
-                        </div>
-                        <button class="btn add-btn" data-type="users"><i class="fas fa-plus"></i> Add User</button>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Login ID</th>
-                                <th>Role</th>
-                                <th>Registration Date</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${filteredUsers.map(user => `
-                                <tr>
-                                    <td>${user.name}</td>
-                                    <td>${user.loginId}</td>
-                                    <td>${user.role}</td>
-                                    <td>2023-01-15</td>
-                                    <td>Active</td>
-                                    <td>
-                                        <button class="action-btn edit-btn" data-type="users" data-id="${user.id}"><i class="fas fa-edit"></i> Edit</button>
-                                        <button class="action-btn delete delete-btn" data-type="users" data-id="${user.id}"><i class="fas fa-trash"></i> Delete</button>
-                                    </td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-        }
+
+  return `
+    <h2 class="page-title">
+      <i class="fas fa-users"></i> User Management
+    </h2>
+
+    <div class="table-container">
+      <div class="table-header">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" class="search-input" placeholder="Search users...">
+        </div>
+        <button class="btn add-btn">
+          <i class="fas fa-plus"></i> Add User
+        </button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Login ID</th>
+            <th>Role</th>
+            <th>Registration Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${
+            state.users.length
+              ? state.users.map(u => `
+                <tr>
+                  <td>${u.name}</td>
+                  <td>${u.loginId}</td>
+                  <td>${u.role}</td>
+                  <td>${u.registrationDate}</td>
+                  <td>
+                    <button class="action-btn edit-btn">
+                      <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="action-btn delete delete-btn">
+                      <i class="fas fa-trash"></i> Delete
+                    </button>
+                  </td>
+                </tr>
+              `).join('')
+              : `<tr><td colspan="5">No users found</td></tr>`
+          }
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
 
         function renderEnrollments() {
-            // Filter enrollments based on search query
-            let filteredEnrollments = state.enrollments;
-            if (state.searchQuery) {
-                filteredEnrollments = state.enrollments.filter(enrollment => {
-                    const student = state.users.find(u => u.id === enrollment.studentId);
-                    const course = state.courses.find(c => c.id === enrollment.courseId);
-                    return (
-                        student.name.toLowerCase().includes(state.searchQuery) ||
-                        course.title.toLowerCase().includes(state.searchQuery)
-                    );
-                });
-            }
-            
-            return `
-                <h2 class="page-title"><i class="fas fa-chart-line"></i> Enrollments & Progress</h2>
-                <div class="table-container">
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search enrollments..." value="${state.searchQuery}">
-                        </div>
-                        ${state.currentRole !== 'admin' ? `<button class="btn add-btn" data-type="enrollments"><i class="fas fa-plus"></i> Add Enrollment</button>` : ''}
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Student</th>
-                                <th>Course</th>
-                                <th>Enrollment Date</th>
-                                <th>Status</th>
-                                <th>Progress</th>
-                                ${state.currentRole !== 'admin' ? '<th>Actions</th>' : ''}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${filteredEnrollments.map(enrollment => {
-                                const student = state.users.find(u => u.id === enrollment.studentId);
-                                const course = state.courses.find(c => c.id === enrollment.courseId);
-                                return `
-                                    <tr>
-                                        <td>${student.name}</td>
-                                        <td>${course.title}</td>
-                                        <td>${enrollment.enrollmentDate}</td>
-                                        <td>${enrollment.status}</td>
-                                        <td>${enrollment.progress}%</td>
-                                        ${state.currentRole !== 'admin' ? `
-                                        <td>
-                                            <button class="action-btn view-btn" data-type="enrollments" data-id="${enrollment.id}"><i class="fas fa-info-circle"></i> Details</button>
-                                            <button class="action-btn delete delete-btn" data-type="enrollments" data-id="${enrollment.id}"><i class="fas fa-trash"></i> Delete</button>
-                                        </td>
-                                        ` : ''}
-                                    </tr>
-                                `;
-                            }).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-        }
 
-        function renderPerformance() {
-            return `
-                <h2 class="page-title"><i class="fas fa-chart-bar"></i> Performance Reports</h2>
-                <div class="table-container">
-                    <div class="table-header">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" class="search-input" placeholder="Search reports..." value="${state.searchQuery}">
-                        </div>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Student</th>
-                                <th>Strengths</th>
-                                <th>Weaknesses</th>
-                                <th>Recommendations</th>
-                                <th>Generated Date</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${state.performanceReports.map(report => {
-                                const student = state.users.find(u => u.id === report.studentId);
-                                return `
-                                    <tr>
-                                        <td>${student.name}</td>
-                                        <td>${report.strengths}</td>
-                                        <td>${report.weaknesses}</td>
-                                        <td>${report.recommendations}</td>
-                                        <td>2023-05-01</td>
-                                        <td>
-                                            <button class="action-btn view-btn" data-type="performanceReports" data-id="${report.id}"><i class="fas fa-file-alt"></i> Full Report</button>
-                                            <button class="action-btn"><i class="fas fa-download"></i> Export</button>
-                                        </td>
-                                    </tr>
-                                `;
-                            }).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-        }
+  const data = state.adminEnrollments || [];
+
+  return `
+    <h2 class="page-title">
+      <i class="fas fa-chart-line"></i> Enrollments & Progress
+    </h2>
+
+    <div class="table-container">
+      <div class="table-header">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search enrollments...">
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Course</th>
+            <th>Enrollment Date</th>
+            <th>Status</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${
+            data.length === 0
+              ? `<tr><td colspan="5" style="text-align:center;">No enrollments found</td></tr>`
+              : data.map(d => `
+                  <tr>
+                    <td>${d.student}</td>
+                    <td>${d.course}</td>
+                    <td>${d.enrollmentDate}</td>
+                    <td>${d.status}</td>
+                    <td>${d.progress}</td>
+                  </tr>
+                `).join('')
+          }
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+
+        function renderViewReport() {
+
+  const reports = state.reports || [];
+
+  return `
+    <h2 class="page-title">
+      <i class="fas fa-file-alt"></i> View Report
+    </h2>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>AI-generated Report</th>
+            <th>Manual Report</th>
+            <th>Course Completion Rate</th>
+            <th>Engagement</th>
+            <th>Course Popularity</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${
+            reports.length === 0
+              ? `<tr><td colspan="5" style="text-align:center;">No reports found</td></tr>`
+              : reports.map(r => `
+                  <tr>
+                    <td>${r.aiReport}</td>
+                    <td>${r.manualReport}</td>
+                    <td>${r.completionRate}</td>
+                    <td>${r.engagement}</td>
+                    <td>${r.popularity}</td>
+                  </tr>
+                `).join('')
+          }
+        </tbody>
+      </table>
+    </div>
+  `;
+}
 
         function renderSettings() {
-            return `
-                <h2 class="page-title"><i class="fas fa-cogs"></i> System Settings</h2>
-        
 
-                <div class="table-container">
-                    <div class="table-header">
-                        <h3><i class="fas fa-user-tie"></i> Instructor Assignments</h3>
-                        <button class="btn add-btn" data-type="assignments"><i class="fas fa-plus"></i> Assign</button>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Instructor ID</th>
-                                <th>Course ID</th>
-                                <th>Assigned Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${state.assignments.map(a => `
-                                <tr>
-                                    <td>${a.instructorId}</td>
-                                    <td>${a.courseId}</td>
-                                    <td>${a.assignedDate}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>
-            `;
-        }
+  const data = state.instructorAssignments || [];
+
+  return `
+    <h2 class="page-title">
+      <i class="fas fa-cogs"></i> System Settings
+    </h2>
+
+    <div class="table-container">
+      <div class="table-header">
+        <h3><i class="fas fa-user"></i> Instructor Assignments</h3>
+        <button class="btn add-btn">
+          <i class="fas fa-plus"></i> Assign
+        </button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Instructor ID</th>
+            <th>Course ID</th>
+            <th>Assigned Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          ${
+            data.length === 0
+              ? `<tr><td colspan="3" style="text-align:center;">No assignments found</td></tr>`
+              : data.map(d => `
+                  <tr>
+                    <td>${d.instructorId}</td>
+                    <td>${d.courseId}</td>
+                    <td>${d.assignedDate}</td>
+                  </tr>
+                `).join('')
+          }
+        </tbody>
+      </table>
+    </div>
+  `;
+}
 
         // Initialize the application when the DOM is loaded
         document.addEventListener('DOMContentLoaded', init);
     </script>
-    <script src="JS/browseCourses.js"></script>
+    <script src="../JS/browseCourses.js"></script>
+    <script src="../JS/courseContent.js"></script>
+    <script src="../js/studentDiscussion.js"></script>
+    <script src="../js/myProgress.js"></script>
+    <script src="../js/assessments.js"></script>
+    <script src="../js/performanceReport.js"></script>
+    <script src="../js/giveReview.js"></script>
+    <script src="../js/certificates.js"></script>
+    <script src="../js/myCourses.js"></script>
+    <script src="../js/userManagement.js"></script>
+    <script src="../js/viewReport.js"></script>
+    <script src="../js/systemSettings.js"></script>
+    <script src="../js/enrollmentAndProgress.js"></script>
+    <script src="../js/studentProgress.js"></script>
 </body>
 </html>
