@@ -1994,10 +1994,23 @@ console.log('COURSES:', state.courses);
 
   let filteredContent = state.courseContents;
 
+  // Apply search filter for course content (matches multiple fields)
+  if (state.searchQuery) {
+    filteredContent = filteredContent.filter(content =>
+      (String(content.contentId) + ' ' + String(content.courseId) + ' ' + (content.courseTitle || '') + ' ' + (content.contentTitle || '') + ' ' + (content.type || '') + ' ' + (content.instructor || '')).toLowerCase().includes(state.searchQuery)
+    );
+  }
+
   return `
     <h2 class="page-title"><i class="fas fa-file-alt"></i> Course Content</h2>
 
     <div class="table-container">
+      <div class="table-header">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" class="search-input" placeholder="Search content..." value="${state.searchQuery}">
+        </div>
+      </div>
       <table>
         <thead>
           <tr>
