@@ -797,6 +797,11 @@
 
             // Set up event listeners
             setupEventListeners();
+
+            // Preload instructor student progress if an instructor is already logged in
+            if (state.currentUser && state.currentUser.role === 'instructor') {
+                loadInstructorStudentProgress();
+            }
         }
 
         // Set up event listeners
@@ -1090,6 +1095,10 @@
                     pageContent = renderCertificates();
                     break;
                 case 'students':
+                    // If the current user is an instructor, fetch the student progress data
+                    if (state.currentUser && state.currentUser.role === 'instructor') {
+                        loadInstructorStudentProgress();
+                    }
                     pageContent = renderStudents();
                     break;
                 case 'users':
@@ -2389,17 +2398,37 @@ console.log('COURSES:', state.courses);
 }
 
         function renderStudents() {
-            const myCourses = state.courses.filter(c => c.instructor === state.currentUser.name);
-            const myEnrollments = state.enrollments.filter(e => 
-                myCourses.some(c => c.id === e.courseId)
-            );
-            
-            // Get unique students
-            const studentIds = [...new Set(myEnrollments.map(e => e.studentId))];
-            const students = state.users.filter(u => 
-                studentIds.includes(u.id) && u.role === 'student'
-            );
-            
+            // Prefer API-fetched progress for instructors, otherwise fall back to computed local data
+            let rowsData = [];
+
+            if (state.studentProgress && state.studentProgress.length) {
+                rowsData = state.studentProgress;
+            } else {
+                const myCourses = state.courses.filter(c => c.instructor === state.currentUser.name);
+                const myEnrollments = state.enrollments.filter(e => 
+                    myCourses.some(c => c.id === e.courseId)
+                );
+
+                // Get unique students
+                const studentIds = [...new Set(myEnrollments.map(e => e.studentId))];
+                const students = state.users.filter(u => 
+                    studentIds.includes(u.id) && u.role === 'student'
+                );
+
+                rowsData = students.map(student => {
+                    const studentEnrollments = myEnrollments.filter(e => e.studentId === student.id);
+                    const avgProgress = studentEnrollments.length > 0 ? 
+                        studentEnrollments.reduce((acc, curr) => acc + curr.progress, 0) / studentEnrollments.length : 0;
+
+                    return {
+                        loginId: student.loginId,
+                        enrolledCourses: studentEnrollments.length,
+                        averageProgress: avgProgress,
+                        lastActivity: 'N/A'
+                    };
+                });
+            }
+
             return `
                 <h2 class="page-title"><i class="fas fa-user-graduate"></i> Student Progress</h2>
                 <div class="table-container">
@@ -2419,20 +2448,14 @@ console.log('COURSES:', state.courses);
                             </tr>
                         </thead>
                         <tbody>
-                            ${students.map(student => {
-                                const studentEnrollments = myEnrollments.filter(e => e.studentId === student.id);
-                                const avgProgress = studentEnrollments.length > 0 ? 
-                                    studentEnrollments.reduce((acc, curr) => acc + curr.progress, 0) / studentEnrollments.length : 0;
-                                
-                                return `
+                            ${rowsData.length ? rowsData.map(p => `
                                     <tr>
-                                        <td>${student.loginId}</td>
-                                        <td>${studentEnrollments.length}</td>
-                                        <td>${avgProgress.toFixed(1)}%</td>
-                                        <td>2023-05-15</td>
+                                        <td>${p.loginId}</td>
+                                        <td>${p.enrolledCourses}</td>
+                                        <td>${(p.averageProgress || 0).toFixed ? (p.averageProgress.toFixed(1) + '%') : p.averageProgress}</td>
+                                        <td>${p.lastActivity || 'N/A'}</td>
                                     </tr>
-                                `;
-                            }).join('')}
+                                `).join('') : `<tr><td colspan="4">No student progress found</td></tr>`}
                         </tbody>
                     </table>
                 </div>
