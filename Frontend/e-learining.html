@@ -1758,102 +1758,102 @@ console.log('COURSES:', state.courses);
     `;
   }
 
-//   /* ===================== INSTRUCTOR ===================== */
-//   else if (state.currentUser.role === 'instructor') {
+  /* ===================== INSTRUCTOR ===================== */
+  else if (state.currentUser.role === 'instructor') {
 
-//     tableHeader = `
-//       <div class="table-header">
-//         <div class="search-box">
-//           <i class="fas fa-search"></i>
-//           <input type="text" class="search-input"
-//                  placeholder="Search your courses..."
-//                  value="${state.searchQuery}">
-//         </div>
-//         <button class="btn add-btn">
-//           <i class="fas fa-plus"></i> Add Course
-//         </button>
-//       </div>
-//     `;
+    tableHeader = `
+      <div class="table-header">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" class="search-input"
+                 placeholder="Search your courses..."
+                 value="${state.searchQuery}">
+        </div>
+        <button class="btn add-btn">
+          <i class="fas fa-plus"></i> Add Course
+        </button>
+      </div>
+    `;
 
-//     tableContent = `
-//       <thead>
-//         <tr>
-//           <th>Course ID</th>
-//           <th>Course Title</th>
-//           <th>Category</th>
-//           <th>Difficulty</th>
-//           <th>Prerequisite CourseID</th>
-//           <th>Enrollments</th>
-//           <th>Rating</th>
-//           <th>Actions</th>
-//         </tr>
-//       </thead>
-//       <tbody>
-//         ${filteredCourses.map(course => `
-//           <tr>
-//             <td>${course.courseId}</td>
-//             <td>${course.title}</td>
-//             <td>${course.category}</td>
-//             <td>${course.difficulty}</td>
-//             <td>${course.prerequisite ?? '-'}</td>
-//             <td>${course.enrollments ?? 0}</td>
-//             <td>${course.rating ?? 'N/A'} ⭐</td>
-//             <td>
-//               <button class="action-btn edit-btn">
-//                 <i class="fas fa-edit"></i> Edit
-//               </button>
-//               <button class="action-btn view-btn">
-//                 <i class="fas fa-chart-bar"></i> Analytics
-//               </button>
-//               <button class="action-btn delete delete-btn">
-//                 <i class="fas fa-trash"></i> Delete
-//               </button>
-//             </td>
-//           </tr>
-//         `).join('')}
-//       </tbody>
-//     `;
-//   }
+    tableContent = `
+      <thead>
+        <tr>
+          <th>Course ID</th>
+          <th>Course Title</th>
+          <th>Category</th>
+          <th>Difficulty</th>
+          <th>Prerequisite CourseID</th>
+          <th>Enrollments</th>
+          <th>Rating</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${filteredCourses.map(course => `
+          <tr>
+            <td>${course.courseId}</td>
+            <td>${course.title}</td>
+            <td>${course.category}</td>
+            <td>${course.difficulty}</td>
+            <td>${course.prerequisite ?? '-'}</td>
+            <td>${course.enrollments ?? 0}</td>
+            <td>${course.rating ?? 'N/A'} ⭐</td>
+            <td>
+              <button class="action-btn edit-btn">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+              <button class="action-btn view-btn">
+                <i class="fas fa-chart-bar"></i> Analytics
+              </button>
+              <button class="action-btn delete delete-btn">
+                <i class="fas fa-trash"></i> Delete
+              </button>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    `;
+  }
 
-//   /* ===================== ADMIN ===================== */
-//   else if (state.currentUser.role === 'admin') {
+  /* ===================== ADMIN ===================== */
+  else if (state.currentUser.role === 'admin') {
 
-//     tableHeader = `
-//       <div class="table-header">
-//         <div class="search-box">
-//           <i class="fas fa-search"></i>
-//           <input type="text" class="search-input"
-//                  placeholder="Search courses..."
-//                  value="${state.searchQuery}">
-//         </div>
-//       </div>
-//     `;
+    tableHeader = `
+      <div class="table-header">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" class="search-input"
+                 placeholder="Search courses..."
+                 value="${state.searchQuery}">
+        </div>
+      </div>
+    `;
 
-//     tableContent = `
-//       <thead>
-//         <tr>
-//           <th>Course Title</th>
-//           <th>Category</th>
-//           <th>Difficulty</th>
-//           <th>Instructor</th>
-//           <th>Rating</th>
-//           <th>Status</th>
-//         </tr>
-//       </thead>
-//       <tbody>
-//         ${filteredCourses.map(course => `
-//           <tr>
-//             <td>${course.title}</td>
-//             <td>${course.category}</td>
-//             <td>${course.difficulty}</td>
-//             <td>${course.instructor}</td>
-//             <td>${course.rating ?? 'N/A'} ⭐</td>
-//             <td>Active</td>
-//           </tr>
-//         `).join('')}
-//       </tbody>
-//     `;
-//   }
+    tableContent = `
+      <thead>
+        <tr>
+          <th>Course Title</th>
+          <th>Category</th>
+          <th>Difficulty</th>
+          <th>Instructor</th>
+          <th>Rating</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${filteredCourses.map(course => `
+          <tr>
+            <td>${course.title}</td>
+            <td>${course.category}</td>
+            <td>${course.difficulty}</td>
+            <td>${course.instructor}</td>
+            <td>${course.rating ?? 'N/A'} ⭐</td>
+            <td>Active</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    `;
+  }
 
   /* ===================== FINAL RENDER ===================== */
   return `
