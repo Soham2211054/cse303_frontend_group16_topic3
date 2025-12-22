@@ -2259,7 +2259,7 @@ console.log('COURSES:', state.courses);
                             </tr>
                         </thead>
                         <tbody>
-                            ${quizzes.map(q => `
+                            ${quizzes.length ? quizzes.map(q => `
                                 <tr>
                                     <td>${q.id}</td>
                                     <td>${q.title}</td>
@@ -2268,7 +2268,7 @@ console.log('COURSES:', state.courses);
                                     <td>${q.date || '-'}</td>
                                     <td>${q.duration || '-'}</td>
                                 </tr>
-                            `).join('')}
+                            `).join('') : `<tr><td colspan="6">No quizzes found</td></tr>`}
                         </tbody>
                     </table>
                 </div>
@@ -2670,5 +2670,6 @@ console.log('COURSES:', state.courses);
     <script src="../js/systemSettings.js"></script>
     <script src="../js/enrollmentAndProgress.js"></script>
     <script src="../js/studentProgress.js"></script>
+    <script src="../js/createQuiz.js"></script>
 </body>
 </html>
