@@ -1266,7 +1266,8 @@
                 'content': 'Content',
                 'quizzes': 'Quiz',
                 'enrollments': 'Enrollment',
-                'assignments': 'Assignment'
+                'assignments': 'Assignment',
+                'reviews': 'Review'
             };
             
             return names[itemType] || 'Item';
@@ -2339,7 +2340,7 @@ console.log('COURSES:', state.courses);
           <input type="text" class="search-input" placeholder="Search reviews..." value="${state.searchQuery}">
         </div>
 
-        <button class="btn add-btn">
+        <button class="btn add-btn" data-type="reviews">
           <i class="fas fa-star"></i> Review
         </button>
       </div>
